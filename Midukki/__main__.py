@@ -51,7 +51,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     await client.send_message(chat_id=message.from_user.id, text="""𝚂𝙾𝚁𝚁𝚈 𝚂𝙸𝚁, 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙱𝙰𝙽𝙽𝙴𝙳 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴""", disable_web_page_preview=True)                  
                     return
             except UserNotParticipant:
-                mrk, file_id, grp_id = message.text.split("_-_-_")
+                mrk, file_id, grp_id = message.text.split("_-_")
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
                 invite_link = await client.create_chat_invite_link(int(Configs.AUTH_CHANNEL))
                 pr0fess0r_99 = [
@@ -70,7 +70,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 await message.reply_photo(photo=choice(FORCES), caption=f"""<i><b>𝙷𝙴𝙻𝙻𝙾 {message.from_user.mention}. \n 𝚈𝙾𝚄 𝙷𝙰𝚅𝙴 <a href="{invite_link.invite_link}"> 𝙽𝙾𝚃 𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴𝙳</a> 𝚃𝙾 <a href="{invite_link.invite_link}">𝙼𝚈 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻</a>.𝚂𝙾 𝚈𝙾𝚄 𝙳𝙾 𝙽𝙾𝚃 𝙶𝙴𝚃 𝚃𝙷𝙴 𝙵𝙸𝙻𝙴𝚂 𝙾𝙽 𝙱𝙾𝚃 𝙿𝙼 𝙾𝚁 𝙶𝚁𝙾𝚄𝙿 (𝙵𝙸𝙻𝚃𝙴𝚁)</i></b>""", reply_markup=pr0fess0r_99)                
                 return
         try:
-            mrk, file_id, grp_id = message.text.split("_-_-_")
+            mrk, file_id, grp_id = message.text.split("_-_")
             file_details_pr0fess0r99 = await get_file_details(file_id)
             settings = await get_settings(int(grp_id))
             for mrk in file_details_pr0fess0r99:
