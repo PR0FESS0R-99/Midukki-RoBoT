@@ -1,12 +1,4 @@
-START_TXT = """
-Hello 👋 {mention} 
-
-I'm <b>{bot}</b> ✨ an advanced telegram Group management
-
-I'm here to help you manage your groups! Hit /help to find out more about how to use me to my full potential..!
-
-Join <b><a href=http://t.me/Mo_Tech_YT>my news channel</a></b> to get information on all the latest updates
-"""
+START_TXT = """𝘿𝙤 𝙮𝙤𝙪 𝙬𝙖𝙣𝙩 𝙢𝙤𝙫𝙞𝙚𝙨? \nThen join our main channel and group. \nThen go to the group and type the name of the movie"""
 
 HELP_TXT = """
 👋 <b>Hello {mention}!</b>
