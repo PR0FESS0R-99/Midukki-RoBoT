@@ -58,8 +58,8 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     [
                         button()
                             (
-                                "payment QR code",
-                                    url="https://t.me/mc_subtitles_bot?start=63831bcbdb435"
+                                "🔰 Join My Channel 🔰",
+                                    url=invite_link.invite_link
                             )
                     ]
                 ]    
