@@ -665,7 +665,7 @@ async def get_result_file(client, query):
     try:
         if Configs.AUTH_CHANNEL != 1:
             if Configs.AUTH_CHANNEL and not await client.is_subscribed(client, query):
-                await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_-_{file_id}")
+                await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_{file_id}")
                 return
             else:     
                 await client.send_cached_media(
@@ -684,9 +684,9 @@ async def get_result_file(client, query):
     except UserIsBlocked:
         await query.answer('Unblock the bot mahn !', show_alert=True)
     except PeerIdInvalid:
-        await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_-_{file_id}")
+        await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_{file_id}")
     except Exception as e:
-        await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_-_{file_id}")
+        await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_{file_id}")
 
 async def auto_filters(client: Midukki_RoboT, message: message()):
 
@@ -716,7 +716,7 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                                 button()
                                     (
                                         f"{filesize} {filename}",
-                                            url=get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_-_{file_id}_-_-_{message.chat.id}")
+                                            url=get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}")
                                     )
                             ]
                         )
@@ -726,7 +726,7 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                                 button()
                                     (
                                         f"{filesize} {filename}",
-                                            url=f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_-_{file_id}_-_-_{message.chat.id}"
+                                            url=f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}"
                                     )
                             ]
                         )
@@ -737,12 +737,12 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                                 button()
                                     (
                                         f"{filesize}",
-                                            url=await get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_-_{file_id}_-_-_{message.chat.id}")
+                                            url=await get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}")
                                     ),
                                 button()
                                     (
                                         f"{filename}",
-                                            url=await get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_-_{file_id}_-_-_{message.chat.id}")
+                                            url=await get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}")
                                     )
                             ]
                         )
@@ -752,12 +752,12 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                                 button()
                                     (
                                         f"{filesize}",
-                                            url=f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_-_{file_id}_-_-_{message.chat.id}"
+                                            url=f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}"
                                     ),
                                 button()
                                     (
                                         f"{filename}",
-                                            url=f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_-_{file_id}_-_-_{message.chat.id}"
+                                            url=f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}"
                                     )
                             ]
                         )
