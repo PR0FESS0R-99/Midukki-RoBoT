@@ -1,6 +1,7 @@
 from os import environ
 from random import choice 
 from pyrogram import filters, enums
+from pyrogram.errors import UserNotParticipant
 from . import Bots, Configs
 from .midukki import Midukki_RoboT
 from .scripts import START_TXT, HELP_TXT, ABOUT_TXT, STATUS_TXT, DONATE_TXT
