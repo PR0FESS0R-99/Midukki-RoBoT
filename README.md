@@ -59,6 +59,7 @@ Do Fork And Star The Repository If You Liked It.
 - [x] SpellCheck (AutoFilter)
 - [x] FileCaption (AutoFilter)
 - [x] Random pics
+- [x] Custom Auto Delete
 
 ### Variables
 
