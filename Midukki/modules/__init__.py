@@ -236,8 +236,8 @@ class vars(object):
         [
             button()
                 (
-                    "❕Help❕",
-                        url="https://t.me/RDX_mc_bot"
+                    "🛃Activate Premium🛃",
+                        url="https://t.me/mc_subtitles_bot?start=63831aab7aef8"
                 ),
             button()
                 (
