@@ -64,6 +64,7 @@ class Configs(object):
 
     # Filters Control
     FILTER_RESULTS = int(environ.get("FILTER_RESULTS", "10"))
+    FILTER_BUTTONS = {}
 
     # Ads Controls
     WEB_URL = environ.get("ADS_WEB_URL")
