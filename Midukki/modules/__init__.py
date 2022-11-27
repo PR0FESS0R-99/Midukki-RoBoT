@@ -217,32 +217,32 @@ class vars(object):
         [
             button()
                 (
-                    "➕️ Add Me To Your Group ➕️",
-                        url=f"https://t.me/{Bots.BOT_USERNAME}?startgroup=new"
+                    "🔅Movie request group🔅",
+                        url=f"https://t.me/joinchat/L8tqSA70VhxmZjQ9"
                 )
         ],
         [
             button()
                 (
-                    "Support",
-                        url="https://t.me/+sv5flNs7yew1OTk1"
+                    "♻️Official Channel♻️",
+                        url="https://t.me/+sMUsk8iHUgMyMDE1"
                 ),
             button()
                 (
-                    "Updates",
-                        url="https://t.me/Mo_Tech_YT"
+                    "❇️New Releases❇️",
+                        url="https://t.me/Movie_Cafes"
                 )
         ],
         [
             button()
                 (
                     "Help",
-                        callback_data="maincb+help_cb"
+                        url="https://t.me/RDX_mc_bot"
                 ),
             button()
                 (
-                    "About",
-                       callback_data="maincb+about_cb"
+                    "🪩Developer🪩",
+                       url="https://t.me/RDX_mc_bot"
                 )
         ]
     ]
