@@ -1,4 +1,5 @@
 import ast
+import pyrogram
 from re import escape, IGNORECASE, search as search_filter
 from logging import ERROR, getLogger
 from pyrogram import filters, enums
