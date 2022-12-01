@@ -53,7 +53,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
             except UserNotParticipant:
                 mrk, file_id, grp_id = message.text.split("_-_")
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                invite_link = await client.create_chat_invite_link(int(Configs.AUTH_CHANNEL))
+                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
                 pr0fess0r_99 = [
                     [
                         button()
@@ -63,11 +63,8 @@ async def start_command(client: Midukki_RoboT, message: message()):
                             )
                     ]
                 ]    
-                pr0fess0r_99 = markup()
-                (
-                    pr0fess0r_99
-                )
-                await message.reply_photo(photo=choice(FORCES), caption=f"""<i><b>𝙷𝙴𝙻𝙻𝙾 {message.from_user.mention}. \n 𝚈𝙾𝚄 𝙷𝙰𝚅𝙴 <a href="{invite_link.invite_link}"> 𝙽𝙾𝚃 𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴𝙳</a> 𝚃𝙾 <a href="{invite_link.invite_link}">𝙼𝚈 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻</a>.𝚂𝙾 𝚈𝙾𝚄 𝙳𝙾 𝙽𝙾𝚃 𝙶𝙴𝚃 𝚃𝙷𝙴 𝙵𝙸𝙻𝙴𝚂 𝙾𝙽 𝙱𝙾𝚃 𝙿𝙼 𝙾𝚁 𝙶𝚁𝙾𝚄𝙿 (𝙵𝙸𝙻𝚃𝙴𝚁)</i></b>""", reply_markup=pr0fess0r_99)                
+                pr0fess0r_99 = markup()(pr0fess0r_99)
+                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
                 return
         try:
             mrk, file_id, grp_id = message.text.split("_-_")
