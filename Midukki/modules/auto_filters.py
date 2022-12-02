@@ -36,6 +36,7 @@ async def media(client, message):
     await save_file(media)
 
 async def send_for_index(client, message):
+    frw_ch_type = message.forward_from_chat.type if message.forward_from_chat else None
     if message.text:
         regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
         match = regex.match(message.text)
@@ -46,7 +47,6 @@ async def send_for_index(client, message):
         if chat_id.isnumeric():
             chat_id = int(("-100" + chat_id))
 
-    frw_ch_type = message.forward_from_chat.type if message.forward_from_chat else None
     elif frw_ch_type == enums.ChatType.CHANNEL:
         last_msg_id = message.forward_from_message_id
         chat_id = message.forward_from_chat.username or message.forward_from_chat.id
