@@ -74,30 +74,39 @@ async def callback_ui(client, query):
         btn, txt = CB.start_cb(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn,
-            parse_mode=enums.ParseMode.DEFAULT 
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn,
+                parse_mode=enums.ParseMode.DEFAULT
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "help_cb":
         btn, txt = CB.help_cb(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn,
-            parse_mode=enums.ParseMode.DEFAULT
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn,
+                parse_mode=enums.ParseMode.DEFAULT
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "about_cb":
         btn, txt = CB.about_cb(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
     
     ##====(help)====##
 
@@ -105,100 +114,133 @@ async def callback_ui(client, query):
         btn, txt = await stats_cb(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "auto_cb":
         btn, txt = CB.auto_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "manual_cb":
         btn, txt = CB.manual_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "info_cb":
         btn, txt = CB.info_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "caption_cb":
         btn, txt = CB.cap_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "spell_cb":
         btn, txt = CB.spell_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "connection_cb":
         btn, txt = CB.connect_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "mute_cb":
         btn, txt = CB.mute_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "ban_cb":
         btn, txt = CB.ban_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "pin_cb":
         btn, txt = CB.pin_help(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn 
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "source_cb":
         btn, txt = CB.source_code(client, query)
         if Configs.LOADING_SYMBOL:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
-        await query.message.edit(
-            text=txt,
-            reply_markup=btn
-        )
+        try:
+            await query.message.edit(
+                text=txt,
+                reply_markup=btn
+            )
+        except MessageNotModified:
+            pass
 
     elif cb == "admin_panel_cb":
         btn, txt = CB.admin_panel(client, query)
