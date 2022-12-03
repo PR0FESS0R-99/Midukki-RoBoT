@@ -46,9 +46,9 @@ async def start_command(client: Midukki_RoboT, message: message()):
         if Configs.AUTH_CHANNEL != 1:
             invite_link = await client.create_chat_invite_link(int(Configs.AUTH_CHANNEL))
             try:
-                user = await client.get_chat_member(int(Configs.AUTH_CHANNEL), user_ids)
-                if user.status == enums.ChatMemberStatus.RESTRICTED:
-                    await client.send_message(chat_id=message.from_user.id, text="""𝚂𝙾𝚁𝚁𝚈 𝚂𝙸𝚁, 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙱𝙰𝙽𝙽𝙴𝙳 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴""", disable_web_page_preview=True)                  
+                user = await client.get_chat_member(Configs.AUTH_CHANNEL, user_ids)
+                if user.status == enums.ChatMemberStatus.BANNED: # Banned chat member
+                    await message.reply(text="""𝚂𝙾𝚁𝚁𝚈 𝚂𝙸𝚁, 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙱𝙰𝙽𝙽𝙴𝙳 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴""", disable_web_page_preview=True)                  
                     return
             except UserNotParticipant:
                 mrk, file_id, grp_id = message.text.split("_-_")
