@@ -63,7 +63,7 @@ class Configs(object):
     CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", Customize.FILE_CAPTION)
 
     # Filters Control
-    FILTER_RESULTS = int(environ.get("FILTER_RESULTS", "10"))
+    FILTER_RESULTS = int(environ.get("FILTER_RESULTS", "5"))
     FILTER_BUTTONS = {}
 
     # Ads Controls
