@@ -906,7 +906,7 @@ async def next_page_(message):
                 ]
             )
         
-        await message.message.edit_message_reply_markup( 
+        await message.edit_message_reply_markup( 
             reply_markup=markup()
                 (
                     buttons
@@ -950,7 +950,7 @@ async def next_page_(message):
                 ]
             )
         
-        await message.message.edit_message_reply_markup( 
+        await message.edit_message_reply_markup( 
             reply_markup=markup()
                 (
                     buttons
@@ -1000,7 +1000,7 @@ async def back_page_(message):
                 ]
             )
         
-        await message.message.edit_message_reply_markup( 
+        await message.edit_message_reply_markup( 
             reply_markup=markup()
                 (
                     buttons
@@ -1046,7 +1046,7 @@ async def back_page_(message):
                 ]
             )
 
-        await message.message.edit_message_reply_markup( 
+        await message.edit_message_reply_markup( 
             reply_markup=markup()
                 (
                     buttons
