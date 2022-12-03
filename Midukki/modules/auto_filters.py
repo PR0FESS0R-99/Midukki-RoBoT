@@ -906,12 +906,15 @@ async def next_page_(message):
                 ]
             )
         
-        await message.edit_message_reply_markup( 
-            reply_markup=markup()
-                (
-                    buttons
-                )
-        )
+        try:
+            await message.edit_message_reply_markup( 
+                reply_markup=markup()
+                    (
+                        buttons
+                    )
+            )
+        except MessageNotModified:
+            pass
         return
     else:
         buttons = data['buttons'][int(index)+1].copy()
@@ -950,12 +953,15 @@ async def next_page_(message):
                 ]
             )
         
-        await message.edit_message_reply_markup( 
-            reply_markup=markup()
-                (
-                    buttons
-                )
-        )
+        try:
+            await message.edit_message_reply_markup( 
+                reply_markup=markup()
+                    (
+                        buttons
+                    )
+            )
+        except MessageNotModified:
+            pass
         return
 
 async def back_page_(message):
@@ -1000,12 +1006,15 @@ async def back_page_(message):
                 ]
             )
         
-        await message.edit_message_reply_markup( 
-            reply_markup=markup()
-                (
-                    buttons
-                )
-        )
+        try:
+            await message.edit_message_reply_markup( 
+                reply_markup=markup()
+                    (
+                        buttons
+                    )
+            )
+        except MessageNotModified:
+            pass
         return
     else:
         buttons = data['buttons'][int(index)-1].copy()
@@ -1046,12 +1055,15 @@ async def back_page_(message):
                 ]
             )
 
-        await message.edit_message_reply_markup( 
-            reply_markup=markup()
-                (
-                    buttons
-                )
-        )
+        try:
+            await message.edit_message_reply_markup( 
+                reply_markup=markup()
+                    (
+                        buttons
+                    )
+            )
+        except MessageNotModified:
+            pass
         return
 
 async def get_shortlink(link):
