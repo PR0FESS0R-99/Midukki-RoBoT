@@ -1,7 +1,7 @@
 from os import environ
 from random import choice 
 from pyrogram import filters, enums
-from pyrogram.errors import UserNotParticipant
+from pyrogram.errors import UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
 from . import Bots, Configs
 from .midukki import Midukki_RoboT
 from .scripts import START_TXT, HELP_TXT, ABOUT_TXT, STATUS_TXT, DONATE_TXT
@@ -13,6 +13,10 @@ from Midukki.functions.commands import button, markup, message
 from Midukki.database import get_file_details
 from Midukki.functions.settings import get_settings
 from Midukki.database import db
+from Midukki.functions.traceback import send_msg
+
+import os, asyncio, aiofiles, aiofiles.os, datetime, random, string, time
+
 
 @Midukki_RoboT.on_message(Command.a)
 async def start_command(client: Midukki_RoboT, message: message()):
@@ -66,6 +70,55 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 pr0fess0r_99 = markup()(pr0fess0r_99)
                 await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
                 return
+            except FloodWait as x:
+                await asyncio.sleep(x.value)
+                FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
+                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
+                pr0fess0r_99 = [
+                    [
+                        button()
+                            (
+                                "🔰 Join My Channel 🔰",
+                                    url=invite_link.invite_link
+                            )
+                    ]
+                ]    
+                pr0fess0r_99 = markup()(pr0fess0r_99)
+                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
+                return    
+            except UserIsBlocked:
+                await message.reply(f"{mention} : blocked the bot")
+                FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
+                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
+                pr0fess0r_99 = [
+                    [
+                        button()
+                            (
+                                "🔰 Join My Channel 🔰",
+                                    url=invite_link.invite_link
+                            )
+                    ]
+                ]    
+                pr0fess0r_99 = markup()(pr0fess0r_99)
+                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
+                return
+            except PeerIdInvalid:
+                await message.reply(f"{mention} : user id invalid")
+                FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
+                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
+                pr0fess0r_99 = [
+                    [
+                        button()
+                            (
+                                "🔰 Join My Channel 🔰",
+                                    url=invite_link.invite_link
+                            )
+                    ]
+                ]    
+                pr0fess0r_99 = markup()(pr0fess0r_99)
+                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
+                return
+
         try:
             mrk, file_id, grp_id = message.text.split("_-_")
             file_details_pr0fess0r99 = await get_file_details(file_id)
@@ -108,6 +161,51 @@ async def donate_command(client: Midukki_RoboT, message: message()):
     else:
         await message.reply_text(text=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username))
     await message.reply(f"You can also donate to the person currently running me [Here]({Configs.DONATE_LINKS})")  
-     
+
+@Midukki_RoboT.on_message(Command.e)
+async def broadcast_command(client: Midukki_RoboT, message: message()):
+    await send_broadcast(client, message, db, send_msg, Configs)
+
+async def send_broadcast(client, message, db, send_msg, temp):    
+    all_users = await db.get_all_users()
+    broadcast_msg = message.reply_to_message
+    while True:
+        broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
+        if not temp.broadcast_ids.get(broadcast_id):
+            break
+    out = await message.reply_text(text="**𝙱𝚁𝙾𝙰𝙳𝙲𝙰𝚂𝚃 𝙸𝙽𝙸𝚃𝙸𝙰𝚃𝙴𝙳..📣**\n   𝚈𝙾𝚄 𝚆𝙸𝙻𝙻 𝙱𝙴 𝙽𝙾𝚃𝙸𝙵𝙸𝙴𝙳 𝚆𝙸𝚃𝙷 𝙻𝙾𝙶 𝙵𝙸𝙻𝙴 𝚆𝙷𝙴𝙽 𝙰𝙻𝙻 𝚃𝙷𝙴 𝚄𝚂𝙴𝚁𝚂 𝙰𝚁𝙴 𝙽𝙾𝚃𝙸𝙵𝙸𝙴𝙳 🔔")
+    start_time = time.time()
+    total_users = await db.total_users_count()
+    done = 0
+    failed = 0
+    success = 0
+    temp.broadcast_ids[broadcast_id] = dict(total = total_users, current = done, failed = failed, success = success)
+    async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
+        async for user in all_users:
+            sts, msg = await send_msg(user_id = int(user['id']), message = broadcast_msg)            
+            if msg is not None:
+                await broadcast_log_file.write(msg)
+            if sts == 200:
+                success += 1
+            else:
+                failed += 1
+            if sts == 400:
+                await db.delete_user(user['id'])
+            done += 1
+            if temp.broadcast_ids.get(broadcast_id) is None:
+                break
+            else:
+                temp.broadcast_ids[broadcast_id].update(dict(current = done, failed = failed, success = success))
+    if temp.broadcast_ids.get(broadcast_id):
+        temp.broadcast_ids.pop(broadcast_id)
+    completed_in = datetime.timedelta(seconds=int(time.time()-start_time))
+    await asyncio.sleep(3)    
+    await out.delete()
+    if failed == 0:
+        await message.reply_text(text=f"""**📣 𝙱𝚁𝙾𝙰𝙳𝙲𝙰𝚂𝚃 𝙲𝙾𝙼𝙿𝙻𝙴𝚃𝙴𝙳 𝙸𝙽** - `{completed_in}`\n\n𝚃𝙾𝚃𝙰𝙻 𝚄𝚂𝙴𝚁𝚂 {total_users}.\n𝚃𝙾𝚃𝙰𝙻 𝙳𝙾𝙽𝙴 {done}, {success} 𝚂𝚄𝙲𝙲𝙴𝚂𝚂 & {failed} 𝙵𝙰𝙸𝙻𝙴𝙳""", quote=True)        
+    else:
+        await message.reply_document(document='broadcast.txt', caption=f"""** 📣 𝙱𝚁𝙾𝙰𝙳𝙲𝙰𝚂𝚃 𝙲𝙾𝙼𝙿𝙻𝙴𝚃𝙴𝙳 𝙸𝙽**- `{completed_in}`\n\n𝚃𝙾𝚃𝙰𝙻 𝚄𝚂𝙴𝚁𝚂 {total_users}.\n𝚃𝙾𝚃𝙰𝙻 𝙳𝙾𝙽𝙴 {done}, {success} 𝚂𝚄𝙲𝙲𝙴𝚂𝚂 & {failed} 𝙵𝙰𝙸𝙻𝙴𝙳""", quote=True)
+    await aiofiles.os.remove('broadcast.txt')
+    
 if __name__ == "__main__":
     Midukki_RoboT().run()
