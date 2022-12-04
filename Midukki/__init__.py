@@ -77,6 +77,7 @@ class Configs(object):
     LOADING_B = environ.get("LOADING_SYMBOL_B", "⚫️")
     STOP_BOT = bool(environ.get("DEFAULT", False))
     PORT_CODE = environ.get("PORT", "8080")
+    broadcast_ids = {} # don't change this..!!  
 
 class Index(object):
     CURRENT = int(environ.get("SKIP", 2))
