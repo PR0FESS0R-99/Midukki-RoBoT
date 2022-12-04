@@ -9,7 +9,7 @@ class Command(object):
     b = command(["help"]) & (filters.private | filters.group)
     c = command(["about"]) & (filters.private | filters.group)
     d = command(["donate"]) & (filters.private | filters.group)
-    d = command(["broadcast"]) & filters.private & filters.user(Configs.ADMINS_ID)
+    e = command(["broadcast"]) & filters.private & filters.user(Configs.ADMINS_ID)
 
 class Manual(object):
     a = command(["add", "filter"]) & (filters.private | filters.group)                                                       
