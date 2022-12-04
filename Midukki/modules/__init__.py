@@ -72,7 +72,7 @@ async def callback_ui(client, query):
     #====(start)===#
     if cb == "start_cb":
         btn, txt = CB.start_cb(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -85,7 +85,7 @@ async def callback_ui(client, query):
 
     elif cb == "help_cb":
         btn, txt = CB.help_cb(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -98,7 +98,7 @@ async def callback_ui(client, query):
 
     elif cb == "about_cb":
         btn, txt = CB.about_cb(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -112,7 +112,7 @@ async def callback_ui(client, query):
 
     elif cb == "stats_cb":
         btn, txt = await stats_cb(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -124,7 +124,7 @@ async def callback_ui(client, query):
 
     elif cb == "auto_cb":
         btn, txt = CB.auto_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -136,7 +136,7 @@ async def callback_ui(client, query):
 
     elif cb == "manual_cb":
         btn, txt = CB.manual_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -148,7 +148,7 @@ async def callback_ui(client, query):
 
     elif cb == "info_cb":
         btn, txt = CB.info_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -160,7 +160,7 @@ async def callback_ui(client, query):
 
     elif cb == "caption_cb":
         btn, txt = CB.cap_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -172,7 +172,7 @@ async def callback_ui(client, query):
 
     elif cb == "spell_cb":
         btn, txt = CB.spell_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -184,7 +184,7 @@ async def callback_ui(client, query):
 
     elif cb == "connection_cb":
         btn, txt = CB.connect_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -196,7 +196,7 @@ async def callback_ui(client, query):
 
     elif cb == "mute_cb":
         btn, txt = CB.mute_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -208,7 +208,7 @@ async def callback_ui(client, query):
 
     elif cb == "ban_cb":
         btn, txt = CB.ban_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -220,7 +220,7 @@ async def callback_ui(client, query):
 
     elif cb == "pin_cb":
         btn, txt = CB.pin_help(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -232,7 +232,7 @@ async def callback_ui(client, query):
 
     elif cb == "source_cb":
         btn, txt = CB.source_code(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
             await query.message.edit(
@@ -244,7 +244,7 @@ async def callback_ui(client, query):
 
     elif cb == "admin_panel_cb":
         btn, txt = CB.admin_panel(client, query)
-        if Configs.LOADING_SYMBOL:
+        if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         if query.from_user.id in Configs.ADMINS_ID:
             await query.message.edit(
