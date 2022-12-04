@@ -20,10 +20,6 @@ import os, asyncio, aiofiles, aiofiles.os, datetime, random, string, time
 
 @Midukki_RoboT.on_message(Command.a)
 async def start_command(client: Midukki_RoboT, message: message()):
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id, message.from_user.first_name)
-        if Configs.LOG_CHANNEL is not None:
-           await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
 
     mention = user_mention(message)
     bot_mention = Bots.BOT_MENTION
@@ -44,7 +40,6 @@ async def start_command(client: Midukki_RoboT, message: message()):
             except Exception as e:
                 await message.reply_text(text=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons))
                 await message.reply(e)
-        return
 
     if message.text.startswith("/start muhammedrk"):
         if Configs.AUTH_CHANNEL != 1:
@@ -120,7 +115,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 ]    
                 pr0fess0r_99 = markup()(pr0fess0r_99)
                 await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
-                return
+
 
         try:
             mrk, file_id, grp_id = message.text.split("_-_")
@@ -133,6 +128,14 @@ async def start_command(client: Midukki_RoboT, message: message()):
         except Exception as error:
             await message.reply_text(f"𝚂𝙾𝙼𝙴𝚃𝙷𝙸𝙽𝙶 𝚆𝙴𝙽𝚃 𝚆𝚁𝙾𝙽𝙶.!\n\n𝙴𝚁𝚁𝙾𝚁:`{error}`")
 
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        if Configs.LOG_CHANNEL is not None:
+           await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
+
+
+
+
 @Midukki_RoboT.on_message(Command.b)
 async def help_command(client: Midukki_RoboT, message: message()):
     mention = user_mention(message)
@@ -143,6 +146,13 @@ async def help_command(client: Midukki_RoboT, message: message()):
         await message.reply_photo(photo=choice(Configs.START_PICS), caption=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))         
     else:
         await message.reply_text(text=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))
+
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        if Configs.LOG_CHANNEL is not None:
+           await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
+
+
             
 @Midukki_RoboT.on_message(Command.c)
 async def about_command(client: Midukki_RoboT, message: message()):
@@ -153,7 +163,12 @@ async def about_command(client: Midukki_RoboT, message: message()):
         await message.reply_photo(photo=choice(Configs.START_PICS), caption=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))         
     else:
         await message.reply_text(text=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.about_buttons))
-          
+
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        if Configs.LOG_CHANNEL is not None:
+           await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
+      
 @Midukki_RoboT.on_message(Command.d)
 async def donate_command(client: Midukki_RoboT, message: message()):
     mention = user_mention(message)
@@ -164,6 +179,12 @@ async def donate_command(client: Midukki_RoboT, message: message()):
     else:
         await message.reply_text(text=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username))
     await message.reply(f"You can also donate to the person currently running me [Here]({Configs.DONATE_LINKS})")  
+
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
+        if Configs.LOG_CHANNEL is not None:
+           await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
+
 
 @Midukki_RoboT.on_message(Command.e)
 async def broadcast_command(client: Midukki_RoboT, message: message()):
