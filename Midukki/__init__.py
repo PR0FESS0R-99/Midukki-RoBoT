@@ -56,7 +56,7 @@ class Configs(object):
     LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
     SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/Mo_Tech_YT')
     CHANNELS = [int(ch) if find.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
-    FORCE_SUB = int(environ.get('FORCE_SUB'))
+    FORCE_SUB = environ.get('FORCE_SUB')
     AUTH_CHANNEL = int(FORCE_SUB) if FORCE_SUB and find.search(FORCE_SUB) else None
     FORCES_SUB_LINK = environ.get('FORCE_SUB_LINK')
 
