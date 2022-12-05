@@ -43,16 +43,24 @@ async def start_command(client: Midukki_RoboT, message: message()):
 
     if message.text.startswith("/start muhammedrk"):
         if Configs.AUTH_CHANNEL:
-            invite_link = await client.create_chat_invite_link(int(Configs.AUTH_CHANNEL))
+            try: mrk, file_id, grp_id = message.text.split("_-_")
+            except Exception as x:
+                return await message.reply("**Error :** `{x}")
+
+            if Configs.FORCES_SUB_LINK:
+                invite_link = Configs.FORCES_SUB_LINK
+            else:
+                try: invite_link = await client.create_chat_invite_link(int(Configs.AUTH_CHANNEL))
+                except FloodWait as x:
+                    await asyncio.sleep(x.value)
+                    return await message.reply(f"FloodWait Error : {x.value}")
             try:
                 user = await client.get_chat_member(Configs.AUTH_CHANNEL, user_ids)
                 if user.status == enums.ChatMemberStatus.BANNED: # Banned chat member
                     await message.reply(text="""𝚂𝙾𝚁𝚁𝚈 𝚂𝙸𝚁, 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙱𝙰𝙽𝙽𝙴𝙳 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴""", disable_web_page_preview=True)                  
                     return
             except UserNotParticipant:
-                mrk, file_id, grp_id = message.text.split("_-_")
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
                 pr0fess0r_99 = [
                     [
                         button()
@@ -66,10 +74,8 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
                 return
             except FloodWait as x:
-                mrk, file_id, grp_id = message.text.split("_-_")
                 await asyncio.sleep(x.value)
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
                 pr0fess0r_99 = [
                     [
                         button()
@@ -83,10 +89,8 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
                 return    
             except UserIsBlocked:
-                mrk, file_id, grp_id = message.text.split("_-_")
                 await message.reply(f"{mention} : blocked the bot")
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
                 pr0fess0r_99 = [
                     [
                         button()
@@ -100,10 +104,8 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
                 return
             except PeerIdInvalid:
-                mrk, file_id, grp_id = message.text.split("_-_")
                 await message.reply(f"{mention} : user id invalid")
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                invite_link = await client.create_chat_invite_link(Configs.AUTH_CHANNEL)
                 pr0fess0r_99 = [
                     [
                         button()
