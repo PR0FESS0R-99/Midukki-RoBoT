@@ -3,7 +3,7 @@ from asyncio import sleep
 from pyrogram import filters, enums
 from Midukki.midukki import Midukki_RoboT
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified
-from pyrogram.errors import UserIsBlocked, MessageNotModified, PeerIdInvalid
+from pyrogram.errors import UserIsBlocked, MessageNotModified, PeerIdInvalid, FloodWait
 from Midukki.database import db, Media, save_file, get_file_details, get_search_results
 from Midukki.functions.commands import button, markup, message
 from Midukki.functions.handlers import AutoFilter, Admins
@@ -915,6 +915,8 @@ async def next_page_(message):
             )
         except MessageNotModified:
             pass
+        except FloodWait as x:
+            await asyncio.sleep(x.value)
         return
     else:
         buttons = data['buttons'][int(index)+1].copy()
@@ -962,6 +964,8 @@ async def next_page_(message):
             )
         except MessageNotModified:
             pass
+        except FloodWait as x:
+            await asyncio.sleep(x.value)
         return
 
 async def back_page_(message):
@@ -1015,6 +1019,8 @@ async def back_page_(message):
             )
         except MessageNotModified:
             pass
+        except FloodWait as x:
+            print(x.value)
         return
     else:
         buttons = data['buttons'][int(index)-1].copy()
@@ -1063,6 +1069,9 @@ async def back_page_(message):
                     )
             )
         except MessageNotModified:
+            pass
+        except FloodWait as x:
+            await asyncio.sleep(x.value)
             pass
         return
 
