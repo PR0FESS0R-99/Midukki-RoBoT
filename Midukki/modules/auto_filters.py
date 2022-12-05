@@ -667,17 +667,9 @@ async def get_result_file(client, query):
     )
  
     try:
-        if Configs.AUTH_CHANNEL != 1:
-            if Configs.AUTH_CHANNEL and not await client.is_subscribed(client, query):
-                await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_{file_id}")
-                return
-            else:     
-                await client.send_cached_media(
-                    chat_id=query.from_user.id,
-                    file_id=file_id,
-                    caption=f_caption                    
-                )
-                await query.answer('Check PM, I have sent files in pm', show_alert=True)
+        if Configs.AUTH_CHANNEL and not await client.is_subscribed(client, query):
+            await query.answer(url=f"https://t.me/{Bots.BOT_USERNAME}?start=Midukki_-_{file_id}")
+            return
         else:     
             await client.send_cached_media(
                 chat_id=query.from_user.id,
