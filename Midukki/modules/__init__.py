@@ -1,5 +1,6 @@
 import asyncio, time, shutil, psutil, os
 from pyrogram import filters, enums
+from pyrogram.errors import MessageNotModified
 from Midukki.functions.media_details import humanbytes, get_size
 from Midukki.functions.commands import button, markup, message               
 from Midukki.functions.settings import get_settings 
