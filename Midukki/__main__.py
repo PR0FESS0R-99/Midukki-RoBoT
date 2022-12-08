@@ -57,7 +57,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
             try:
                 user = await client.get_chat_member(Configs.AUTH_CHANNEL, user_ids)
                 if user.status == enums.ChatMemberStatus.BANNED: # Banned chat member
-                    await message.reply(text="""𝚂𝙾𝚁𝚁𝚈 𝚂𝙸𝚁, 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙱𝙰𝙽𝙽𝙴𝙳 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴""", disable_web_page_preview=True)                  
+                    await message.reply(text="""Please Join My pdf Channel to use this Bot!""", disable_web_page_preview=True)                  
                     return
             except UserNotParticipant:
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
@@ -65,7 +65,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     [
                         button()
                             (
-                                "🔰 Join My Channel 🔰",
+                                "📚 Join My Pdf Channel 📚",
                                     url=invite_link.invite_link
                             )
                     ]
@@ -80,7 +80,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     [
                         button()
                             (
-                                "🔰 Join My Channel 🔰",
+                                "📚 Join My Pdf Channel 📚",
                                     url=invite_link.invite_link
                             )
                     ]
@@ -95,7 +95,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     [
                         button()
                             (
-                                "🔰 Join My Channel 🔰",
+                                "📚 Join My Pdf Channel 📚",
                                     url=invite_link.invite_link
                             )
                     ]
@@ -110,7 +110,7 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     [
                         button()
                             (
-                                "🔰 Join My Channel 🔰",
+                                "📚 Join My Pdf Channel 📚",
                                     url=invite_link.invite_link
                             )
                     ]
