@@ -44,7 +44,7 @@ class Configs(object):
     # bot information   
     COMMAND_PREFIXES = environ.get("COMMAND_PREFIXES", "/")
     if environ.get("BOT_PICS"):
-        START_PICS = (environ.get("BOT_PICS", "https://telegra.ph/file/5ad2c57ae74bafb6efec1.jpg")).split()
+        START_PICS = (environ.get("BOT_PICS", "https://te.legra.ph/file/b5d8d1dc470ac91ae58ee.jpg")).split()
     START_MESSAGE = environ.get("START_MESSAGE", START_TXT)
 
     # MongoDB information
@@ -54,7 +54,7 @@ class Configs(object):
 
     # Groups & Channels
     LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
-    SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/Mo_Tech_YT')
+    SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/ebooks_malayalam_ebooks')
     CHANNELS = [int(ch) if find.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
     FORCE_SUB = environ.get('FORCE_SUB')
     AUTH_CHANNEL = int(FORCE_SUB) if FORCE_SUB and find.search(FORCE_SUB) else None
