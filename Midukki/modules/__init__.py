@@ -268,12 +268,12 @@ class vars(object):
             button()
                 (
                     "Support",
-                        url="https://t.me/+sv5flNs7yew1OTk1"
+                        url="https://t.me/malayalamaudiobooksebooks"
                 ),
             button()
                 (
                     "Updates",
-                        url="https://t.me/Mo_Tech_YT"
+                        url="https://t.me/ebooks_malayalam_ebooks"
                 )
         ],
         [
@@ -292,45 +292,45 @@ class vars(object):
     help_buttons = [
         [
             button()(
-                "📤AutoFilter", callback_data="maincb+auto_cb"
+                "AutoFilter", callback_data="maincb+auto_cb"
             ),
             button()(
-                "🎛️ManualFilter", callback_data="maincb+manual_cb"
+                "ManualFilter", callback_data="maincb+manual_cb"
             )
         ],
         [
             button()(
-                "🤬Ban", callback_data="maincb+ban_cb"
+                "Ban", callback_data="maincb+ban_cb"
             ),
             button()(
-                "🤐Mute", callback_data="maincb+mute_cb"
+                "Mute", callback_data="maincb+mute_cb"
             ),
             button()(
-                "ℹ️IDs", callback_data="maincb+info_cb"
+                "IDs", callback_data="maincb+info_cb"
             )
         ],
         [     
             button()(
-                "📌Pin", callback_data="maincb+pin_cb"
+                "Pin", callback_data="maincb+pin_cb"
             ),
             button()(
-                "🗣️Spell", callback_data="maincb+spell_cb"
+                "Spell", callback_data="maincb+spell_cb"
             ),
             button()(
-                "📝Caption", callback_data="maincb+caption_cb"
+                "Caption", callback_data="maincb+caption_cb"
             )
         ],
         [
             button()(
-                "🔗Connection", callback_data="maincb+connection_cb"
+                "Connection", callback_data="maincb+connection_cb"
             ),
             button()(
-                "📡Status", callback_data="maincb+stats_cb"
+                "📊Status📊", callback_data="maincb+stats_cb"
             )
         ],
         [
             button()(
-               "🔐Admin Panel🔐", callback_data="maincb+admin_panel_cb"
+               "Admin Panel", callback_data="maincb+admin_panel_cb"
             )
         ],
         [
@@ -347,24 +347,19 @@ class vars(object):
             button()
                 (
                     "Support",
-                        url="https://t.me/Mo_Tech_YT"
+                        url="https://t.me/ebooks_malayalam_ebooks"
                 ),
             button()
                 (
                     "Source",
-                        url="https://t.me/+sv5flNs7yew1OTk1"
+                        url="https://t.me/malayalamaudiobooksebooks"
                 )
         ],
         [
             button()
                 (
-                    "Tutorial",
-                        url="https://youtu.be/63K9xkKMBoo"
-                ),
-            button()
-                (
-                    "Insta",
-                        url="https://www.instagram.com/mrk_yt_"
+                    "Instagram",
+                        url="https://www.instagram.com/a.d_n_a.n"
                 )
         ],
         [
