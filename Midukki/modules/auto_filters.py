@@ -1089,7 +1089,25 @@ async def get_shortlink(link):
 
 async def check_correct_spelling(message, settings):
     try:
-        await message.reply(settings["spell_caption"].format(mention=user_mention(message), title=message.chat.title, query=message.text))
+        await message.reply(settings["spell_caption"].format(mention=user_mention(message), title=message.chat.title, query=message.text),
+            reply_markup=markup()
+            (
+                button()
+                    (
+                        "🔍 Search In Google 🔎",
+                            url="https://www.google.com/"
+                    )
+            )
+        )     
     except Exception as e:
-        await message.reply(Customize.SPELLCHECK_CAPTION.format(mention=user_mention(message), title=message.chat.title, query=message.text))
+        await message.reply(Customize.SPELLCHECK_CAPTION.format(mention=user_mention(message), title=message.chat.title, query=message.text),
+            reply_markup=markup()
+            (
+                button()
+                    (
+                        "🔍 Search In Google 🔎",
+                            url="https://www.google.com/"
+                    )
+            )
+        )
         await message.reply(e)
