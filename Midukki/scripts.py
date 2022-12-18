@@ -214,12 +214,12 @@ ADMIN_PANEL = """
 
 FILE_CAPTION_TXT = """{file_name}"""
 
-SPELLCHECK_TXT = """ഹായ് ദയവായി
-നിങ്ങളുടെ അക്ഷരതെറ്റ് പരിശോധിക്കുക
+SPELLCHECK_TXT = """Hey Mr 
+Check Your Spelling 
 """
 
-EBOOKS_MALAYLAM_CHANNEL_TXT = """
-🙋‍♂️ Hey {mention} t.me/ebooks_malayalam_ebooks
+IMDB_TEMPLATE_TXT = """
+🙋‍♂️ Hey {mention} Your Requested {query} is ready 👍
 """
 
 WELCOME_TXT = """
@@ -246,4 +246,3 @@ class Txt(object):
     BAN_TXT = BAN_TXT
     PIN_TXT = PIN_TXT
     ADMIN_PANEL = ADMIN_PANEL
-    EBOOKS_MALAYLAM_CHANNEL_TXT = EBOOKS_MALAYLAM_CHANNEL_TXT
