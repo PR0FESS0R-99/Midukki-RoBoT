@@ -10,4 +10,4 @@ cd /Midukki-RoBoT
 pip3 install -U -r requirements.txt
 echo "Starting Midukki-RoBoT Bot...."
 
-python3 -m Midukki
+python3 -m Midukki.midukki
