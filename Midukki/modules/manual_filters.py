@@ -59,6 +59,13 @@ async def manual_filters(client, message, text=False):
                 except Exception as e:
                     logger.exception(e)
                 break
+
+        if not await db.get_chat(message.chat.id):
+            await db.add_chat(message.chat.id, message.chat.title)
+            if Configs.LOG_CHANNEL != 0:
+                total=await client.get_chat_members_count(message.chat.id)
+                mrk = message.from_user.mention if message.from_user else "Anonymous" 
+                await client.send_message(Configs.LOG_CHANNEL, text="""name : {}\nid : `{}`\ntotal users : {}\nuser : `{}`""".format(message.chat.title, message.chat.id, total, mrk))      
     else:
         return False
 
