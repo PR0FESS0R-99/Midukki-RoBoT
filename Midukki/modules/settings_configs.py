@@ -1,10 +1,11 @@
 from pyrogram import enums 
 from Midukki.midukki import Midukki_RoboT
 from Midukki.functions.commands import button, markup, message
-from Midukki.functions.settings import get_settings, save_group_settings, setting_command            
+from Midukki.functions.settings import get_settings, save_group_settings, setting_command, reload_command          
 from Midukki.database import db
+from Midukki import Configs
 
-@Midukki_RoboT.on_message(setting_command)
+@Midukki_RoboT.on_message(reload_command)
 async def reloaddbchat(client: Midukki_RoboT, message):
     userid = message.from_user.id if message.from_user else None
 
