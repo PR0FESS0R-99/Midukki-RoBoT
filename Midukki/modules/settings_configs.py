@@ -33,7 +33,7 @@ async def reloaddbchat(client: Midukki_RoboT, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if (st.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS ):
+    if (st.status != enums.ChatMemberStatus.OWNER and str(userid) not in Configs.ADMINS_ID ):
         return
 
     await db.delete_chat(int(grp_id))
@@ -68,7 +68,7 @@ async def settings(client: Midukki_RoboT, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if (st.status != enums.ChatMemberStatus.ADMINISTRATOR and st.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS ):
+    if (st.status != enums.ChatMemberStatus.ADMINISTRATOR and st.status != enums.ChatMemberStatus.OWNER and str(userid) not in Configs.ADMINS_ID ):
         return
 
     settings = await get_settings(grp_id)
