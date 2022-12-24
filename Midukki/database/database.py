@@ -102,6 +102,9 @@ class Database:
             return chat.get('settings', default)
         return default
 
+    async def delete_chat(self, id):
+        await self.groups.delete_many({'id': int(id)})
+
     # : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : #
 
     async def add_filter(self, grp_id, text, reply_text, btn, file, alert):
