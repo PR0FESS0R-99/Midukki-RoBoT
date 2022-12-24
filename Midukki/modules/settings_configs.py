@@ -37,13 +37,7 @@ async def reloaddbchat(client: Midukki_RoboT, message):
     if (st.status != enums.ChatMemberStatus.OWNER and str(userid) not in Configs.ADMINS_ID ):
         return
 
-    settings = await get_settings(str(grp_id))
-
-    if settings["buttons"] == "True":
-        await save_group_settings(str(grp_id), "buttons", False)
-    else:
-        await save_group_settings(str(grp_id), "buttons", True)
-
+    await db.delete_chat(grp_id)
     await message.reply(f"Successfully reloaded Database")
 
 @Midukki_RoboT.on_message(setting_command)
