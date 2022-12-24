@@ -103,7 +103,7 @@ class Database:
         return default
 
     async def delete_chat(self, id):
-        await self.groups.delete_many({'id': int(id)})
+        await self.groups.delete_many({'id': id})
 
     # : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : #
 
