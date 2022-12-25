@@ -1,12 +1,10 @@
 START_TXT = """
-Hello 👋 {mention} 
-
-I'm <b>{bot}</b> ✨ an advanced telegram Group management
-
-I'm here to help you manage your groups! Hit /help to find out more about how to use me to my full potential..!
-
-Join <b><a href=http://t.me/Mo_Tech_YT>my news channel</a></b> to get information on all the latest updates
+i am <a href=https://t.me/{}>{}</a>,
+<i>I Can Provide Malayalam, English All Other Language Pdf And Epub Other Format stories/Novels In Telegram Groups. You Can Search Any PDFs Via Inline. I Can Also Add Filters In Telegram Groups.  Just Add Me To Your Group And Enjoy</i>
+Your favorite stories are now at your fingertips.. 😍😍
+<b>Made With ❤ BY @mr_readers  </b>
 """
+    HELP_TXT = """hello {}
 
 HELP_TXT = """
 👋 <b>Hello {mention}!</b>
