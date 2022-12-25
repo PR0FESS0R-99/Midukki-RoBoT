@@ -190,7 +190,11 @@ async def donate_command(client: Midukki_RoboT, message: message()):
 
 @Midukki_RoboT.on_message(Command.e)
 async def broadcast_command(client: Midukki_RoboT, message: message()):
-    await send_broadcast(client, message, db, send_msg, Configs)
+    x = message.from_user.id if message.from_user else None
+    if x in Configs.ADMINS_ID:
+        await send_broadcast(client, message, db, send_msg, Configs)
+    else:
+        await message.delete()
 
 async def send_broadcast(client, message, db, send_msg, temp):    
     all_users = await db.get_all_users()

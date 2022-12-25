@@ -26,7 +26,7 @@ class Midukki_RoboT(Client):
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
-       # id1 = await self.get_users(Configs.ADMINS_ID[0])
+      #  id1 = await self.get_users(Configs.ADMINS_ID[0])
       #  id2 = await self.get_users(int(5601313788))
 
         Bots.BOT_ID = usr_bot_me.id
@@ -41,17 +41,15 @@ class Midukki_RoboT(Client):
         if Configs.LOG_CHANNEL:
             await self.send_logs(int(Configs.LOG_CHANNEL))
 
-    async def stop(self, *args):
-        await super().stop()
-
-        if Configs.STOP_BOT == False:
-            print("Bot stopped. Bye.")
-
         if Configs.STOP_BOT == True:
             client = stop_bot.AppRunner(await bot_run())
             await client.setup()
             bind_address = "0.0.0.0"
             await stop_bot.TCPSite(client, bind_address, Configs.PORT_CODE).start()
+
+    async def stop(self, *args):
+        await super().stop()
+        print("Bot stopped. Bye.")
 
     async def iter_messages(self, chat_id: Union[int, str], limit: int, offset: int = 0) -> Optional[AsyncGenerator["types.Message", None]]:
         current = offset

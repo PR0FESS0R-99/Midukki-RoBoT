@@ -696,6 +696,12 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
         if not files:
             if settings["spell_check"]:
                 await check_correct_spelling(message, settings)
+            if not await db.get_chat(message.chat.id):
+                await db.add_chat(message.chat.id, message.chat.title)
+                if Configs.LOG_CHANNEL != 0:
+                    total=await client.get_chat_members_count(message.chat.id)
+                    mrk = message.from_user.mention if message.from_user else "Anonymous" 
+                    await client.send_message(Configs.LOG_CHANNEL, text="""name : {}\nid : `{}`\ntotal users : {}\nuser : `{}`""".format(message.chat.title, message.chat.id, total, mrk))      
                 return
             return
 
@@ -712,7 +718,7 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                                 button()
                                     (
                                         f"{filesize} {filename}",
-                                            url=get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}")
+                                            url=await get_shortlink(f"http://telegram.dog/{Bots.BOT_USERNAME}?start=muhammedrk_-_{file_id}_-_{message.chat.id}")
                                     )
                             ]
                         )
@@ -814,6 +820,14 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                 await asyncio.sleep(Del_Time)
                 await result.delete()
 
+            if not await db.get_chat(message.chat.id):
+                await db.add_chat(message.chat.id, message.chat.title)
+                if Configs.LOG_CHANNEL != 0:
+                    total=await client.get_chat_members_count(message.chat.id)
+                    mrk = message.from_user.mention if message.from_user else "Anonymous" 
+                    await client.send_message(Configs.LOG_CHANNEL, text="""name : {}\nid : `{}`\ntotal users : {}\nuser : `{}`""".format(message.chat.title, message.chat.id, total, mrk))      
+
+
         else:
             buttons = btn
             buttons.append(
@@ -851,6 +865,14 @@ async def auto_filters(client: Midukki_RoboT, message: message()):
                 await message.reply(e)
                 await asyncio.sleep(Del_Time)
                 await result.delete()
+
+            if not await db.get_chat(message.chat.id):
+                await db.add_chat(message.chat.id, message.chat.title)
+                if Configs.LOG_CHANNEL != 0:
+                    total=await client.get_chat_members_count(message.chat.id)
+                    mrk = message.from_user.mention if message.from_user else "Anonymous" 
+                    await client.send_message(Configs.LOG_CHANNEL, text="""name : {}\nid : `{}`\ntotal users : {}\nuser : `{}`""".format(message.chat.title, message.chat.id, total, mrk))      
+
 
 def split_list(l, n):
     for i in range(0, len(l), n):
@@ -1089,7 +1111,33 @@ async def get_shortlink(link):
 
 async def check_correct_spelling(message, settings):
     try:
-        await message.reply(settings["spell_caption"].format(mention=user_mention(message), title=message.chat.title, query=message.text))
+        await message.reply(settings["spell_caption"].format(mention=user_mention(message), title=message.chat.title, query=message.text),
+            reply_markup=markup()
+            (
+                [
+                    [
+                        button()
+                            (
+                                "🔍 Search In Google 🔎",
+                                    url="https://www.google.com/"
+                            )
+                    ]
+                ]
+            )
+        )     
     except Exception as e:
-        await message.reply(Customize.SPELLCHECK_CAPTION.format(mention=user_mention(message), title=message.chat.title, query=message.text))
+        await message.reply(Customize.SPELLCHECK_CAPTION.format(mention=user_mention(message), title=message.chat.title, query=message.text),
+            reply_markup=markup()
+            (
+                [
+                    [
+                        button()
+                            (
+                                "🔍 Search In Google 🔎",
+                                    url="https://www.google.com/"
+                            )
+                    ]
+                ]
+            )
+        )
         await message.reply(e)

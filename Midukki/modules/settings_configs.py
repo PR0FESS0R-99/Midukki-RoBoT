@@ -1,8 +1,44 @@
 from pyrogram import enums 
 from Midukki.midukki import Midukki_RoboT
 from Midukki.functions.commands import button, markup, message
-from Midukki.functions.settings import get_settings, save_group_settings, setting_command            
+from Midukki.functions.settings import get_settings, save_group_settings, setting_command, reload_command          
 from Midukki.database import db
+from Midukki import Configs
+
+@Midukki_RoboT.on_message(reload_command)
+async def reloaddbchat(client: Midukki_RoboT, message):
+    userid = message.from_user.id if message.from_user else None
+
+    if not userid:
+        return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
+    
+    if message.chat.type == enums.ChatType.PRIVATE:
+        grpid = await db.active_connection(str(userid))
+        if grpid is not None:
+            grp_id = grpid
+            try:
+                chat = await client.get_chat(grpid)
+                title = chat.title
+            except:
+                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                return
+        else:
+            await message.reply_text("I'm not connected to any groups!", quote=True)
+            return
+
+    elif message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        grp_id = message.chat.id
+        title = message.chat.title
+
+    else:
+        return
+
+    st = await client.get_chat_member(grp_id, userid)
+    if (st.status != enums.ChatMemberStatus.OWNER and str(userid) not in Configs.ADMINS_ID ):
+        return
+
+    await db.delete_chat(grp_id)
+    await message.reply(f"Successfully reloaded Database")
 
 @Midukki_RoboT.on_message(setting_command)
 async def settings(client: Midukki_RoboT, message):
@@ -33,7 +69,7 @@ async def settings(client: Midukki_RoboT, message):
         return
 
     st = await client.get_chat_member(grp_id, userid)
-    if (st.status != enums.ChatMemberStatus.ADMINISTRATOR and st.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS ):
+    if (st.status != enums.ChatMemberStatus.ADMINISTRATOR and st.status != enums.ChatMemberStatus.OWNER and str(userid) not in Configs.ADMINS_ID ):
         return
 
     settings = await get_settings(grp_id)

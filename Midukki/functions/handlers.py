@@ -9,13 +9,13 @@ class Command(object):
     b = command(["help"]) & (filters.private | filters.group)
     c = command(["about"]) & (filters.private | filters.group)
     d = command(["donate"]) & (filters.private | filters.group)
-    e = command(["broadcast"]) & filters.private & filters.user(Configs.ADMINS_ID)
+    e = command(["broadcast"]) & filters.private
 
 class Manual(object):
     a = command(["add", "filter"]) & (filters.private | filters.group)                                                       
     b = command(["filters", "all_filters"]) & (filters.private | filters.group)
-    c = command(["del", "del_filter"]) & (filters.private | filters.group)
-    d = command(["delall", "del_all", "delall_filter"]) & (filters.private | filters.group)
+    c = command(["del", "stop"]) & (filters.private | filters.group)
+    d = command(["delall", "stopall", "delall_filter"]) & (filters.private | filters.group)
 
 class Connection(object):
     a = command(["connect"]) & (filters.private | filters.group)                                                       
@@ -57,4 +57,4 @@ class Admins(object):
     d = command(["delallfile"]) & filters.user(Configs.ADMINS_ID) & filters.private
     e = command(["skip"]) & filters.user(Configs.ADMINS_ID) & filters.private
     f = command(["logs"]) & filters.user(Configs.ADMINS_ID) & filters.private
-    g = command(["broadcast"]) & filters.user(Configs.ADMINS_ID) & filters.private
+    
