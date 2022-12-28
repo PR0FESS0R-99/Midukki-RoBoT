@@ -24,9 +24,9 @@ class Accounts(object):
 
 class Bots(object):
     BOT_ID = int(environ.get("BOT_ID", Accounts.BOT_TOKEN.split(":")[0]))
-    BOT_NAME = environ.get("BOT_NAME", None)
-    BOT_MENTION = environ.get("BOT_MENTION", None)
-    BOT_USERNAME = environ.get("BOT_USERNAME", None)
+    BOT_NAME = None # "Midukki"
+    BOT_MENTION = None # "@Midukki_Robot"
+    BOT_USERNAME = None # "Midukki_Robot"
     #bot up time
     BOT_START_TIME = time()
 
