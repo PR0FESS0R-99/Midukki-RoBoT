@@ -353,8 +353,8 @@ async def save_file(media):
             file_name=file_name,
             file_size=media.file_size,
             file_type=media.file_type,
-            mime_type=media.mime_type,
-            caption=media.caption.html if media.caption else None,
+            mime_type=media.mime_type, 
+            caption=media.caption.html if media.caption else None,         
         )
     except ValidationError:
         logger.exception('Error occurred while saving file in database')
@@ -363,13 +363,10 @@ async def save_file(media):
         try:
             await file.commit()
         except DuplicateKeyError:      
-            logger.warning(
-                f'{getattr(media, "file_name", "NO_FILE")} is already saved in database'
-            )
-
+            logger.warning(str(getattr(media, "file_name", "NO FILE NAME")) + " is already saved in database")
             return False, 0
         else:
-            logger.info(f'{getattr(media, "file_name", "NO_FILE")} is saved to database')
+            logger.info(str(getattr(media, "file_name", "NO FILE NAME")) + " is saved in database")
             return True, 1
 
 async def get_search_results(query, file_type=None, max_results=1000, offset=0, filter=False):
