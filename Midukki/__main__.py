@@ -17,7 +17,6 @@ from Midukki.functions.traceback import send_msg
 
 import os, asyncio, aiofiles, aiofiles.os, datetime, random, string, time
 
-
 @Midukki_RoboT.on_message(Command.a)
 async def start_command(client: Midukki_RoboT, message: message()):
 
@@ -30,15 +29,15 @@ async def start_command(client: Midukki_RoboT, message: message()):
     if len(message.command) != 2:
         if environ.get("BOT_PICS"):
             try:
-                await message.reply_photo(photo=choice(Configs.START_PICS), caption=Configs.START_MESSAGE.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons))         
+                await message.reply_photo(photo=choice(Configs.START_PICS), caption=Configs.START_MESSAGE.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons), disable_web_page_preview=False)   
             except Exception as e:
-                await message.reply_photo(photo=choice(Configs.START_PICS), caption=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons))         
+                await message.reply_photo(photo=choice(Configs.START_PICS), caption=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons), disable_web_page_preview=False)     
                 await message.reply(e)
         else:
             try:
-                await message.reply_text(text=Configs.START_MESSAGE.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons))
+                await message.reply_text(text=Configs.START_MESSAGE.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons), disable_web_page_preview=True)
             except Exception as e:
-                await message.reply_text(text=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons))
+                await message.reply_text(text=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.start_buttons), disable_web_page_preview=True)
                 await message.reply(e)
 
     if message.text.startswith("/start muhammedrk"):
@@ -135,9 +134,6 @@ async def start_command(client: Midukki_RoboT, message: message()):
         if Configs.LOG_CHANNEL is not None:
            await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
 
-
-
-
 @Midukki_RoboT.on_message(Command.b)
 async def help_command(client: Midukki_RoboT, message: message()):
     mention = user_mention(message)
@@ -145,16 +141,14 @@ async def help_command(client: Midukki_RoboT, message: message()):
     bot_mention = Bots.BOT_MENTION
     bot_username = Bots.BOT_USERNAME    
     if environ.get("BOT_PICS"):
-        await message.reply_photo(photo=choice(Configs.START_PICS), caption=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))         
+        await message.reply_photo(photo=choice(Configs.START_PICS), caption=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons), disable_web_page_preview=False)    
     else:
-        await message.reply_text(text=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))
+        await message.reply_text(text=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons), disable_web_page_preview=True)
 
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         if Configs.LOG_CHANNEL is not None:
            await client.send_message(Configs.LOG_CHANNEL, "Name: {}\nId: `{}`".format(message.from_user.id, message.from_user.mention))
-
-
             
 @Midukki_RoboT.on_message(Command.c)
 async def about_command(client: Midukki_RoboT, message: message()):
@@ -162,9 +156,9 @@ async def about_command(client: Midukki_RoboT, message: message()):
     bot_name = Bots.BOT_NAME
     bot_username = Bots.BOT_USERNAME    
     if environ.get("BOT_PICS"):
-        await message.reply_photo(photo=choice(Configs.START_PICS), caption=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))         
+        await message.reply_photo(photo=choice(Configs.START_PICS), caption=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons), disable_web_page_preview=False)   
     else:
-        await message.reply_text(text=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.about_buttons))
+        await message.reply_text(text=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.about_buttons), disable_web_page_preview=True)
 
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
@@ -177,9 +171,9 @@ async def donate_command(client: Midukki_RoboT, message: message()):
     bot_name = Bots.BOT_NAME
     bot_username = Bots.BOT_USERNAME    
     if environ.get("BOT_PICS"):
-        await message.reply_photo(photo=choice(Configs.START_PICS), caption=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username))         
+        await message.reply_photo(photo=choice(Configs.START_PICS), caption=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username), disable_web_page_preview=False)      
     else:
-        await message.reply_text(text=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username))
+        await message.reply_text(text=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username), disable_web_page_preview=True)
     await message.reply(f"You can also donate to the person currently running me [Here]({Configs.DONATE_LINKS})")  
 
     if not await db.is_user_exist(message.from_user.id):
