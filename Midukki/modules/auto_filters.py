@@ -467,7 +467,7 @@ async def channel_info(client, message):
 
     text = '📑 **Indexed channels/groups**\n'
     for channel in channels:
-        chat = await bot.get_chat(channel)
+        chat = await client.get_chat(channel)
         if chat.username:
             text += '\n@' + chat.username
         else:
