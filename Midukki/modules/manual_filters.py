@@ -4,6 +4,7 @@ from re import escape, IGNORECASE, search as search_filter
 from logging import ERROR, getLogger
 from pyrogram import filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.errors import MediaEmpty, MessageEmpty
 from Midukki.midukki import Midukki_RoboT
 from Midukki.functions.handlers import Manual
 from Midukki.functions.keyboards import parser, split_quotes
@@ -31,31 +32,47 @@ async def manual_filters(client, message, text=False):
                 try:
                     if fileid == "None":
                         if btn == "[]":
-                            await client.send_message(group_id, reply_text, disable_web_page_preview=True)
+                            try: await client.send_message(group_id, reply_text, disable_web_page_preview=True, reply_to_message_id=reply_id)
+                            except MessageEmpty:
+                                return await message.reply("Message Founded in My Database (Manual filters)")
+                            except Exception as err:
+                                return await message.reply(f"Error : {err}")
                         else:
                             button = eval(btn)
-                            await client.send_message(
-                                group_id,
-                                reply_text,
-                                disable_web_page_preview=True,
-                                reply_markup=InlineKeyboardMarkup(button),
-                                reply_to_message_id=reply_id
-                            )
+                            try: await client.send_message(
+                                     group_id,
+                                     reply_text,
+                                     disable_web_page_preview=True,
+                                     reply_markup=InlineKeyboardMarkup(button),
+                                     reply_to_message_id=reply_id
+                                 )
+                            except MessageEmpty:
+                                return await message.reply("Message Founded in My Database (Manual filters)")
+                            except Exception as err:
+                                return await message.reply(f"Error : {err}")
                     elif btn == "[]":
-                        await client.send_cached_media(
-                            group_id,
-                            fileid,
-                            caption=reply_text or "",
-                            reply_to_message_id=reply_id
-                        )
+                        try: await client.send_cached_media(
+                                 group_id,
+                                 fileid,
+                                 caption=reply_text or "",
+                                 reply_to_message_id=reply_id
+                             )
+                        except [MessageEmpty, MediaEmpty]:
+                            return await message.reply("Message Founded in My Database (Manual filters)")
+                        except Exception as err:
+                            return await message.reply(f"Error : {err}")
                     else:
                         button = eval(btn)
-                        await message.reply_cached_media(
-                            fileid,
-                            caption=reply_text or "",
-                            reply_markup=InlineKeyboardMarkup(button),
-                            reply_to_message_id=reply_id
-                        )
+                        try: await message.reply_cached_media(
+                                 fileid,
+                                 caption=reply_text or "",
+                                 reply_markup=InlineKeyboardMarkup(button),
+                                 reply_to_message_id=reply_id
+                             ) 
+                        except [MessageEmpty, MediaEmpty]:
+                            return await message.reply("Message Founded in My Database (Manual filters)")
+                        except Exception as err:
+                            return await message.reply(f"Error : {err}")
                 except Exception as e:
                     logger.exception(e)
                 break
