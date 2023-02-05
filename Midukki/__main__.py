@@ -71,7 +71,6 @@ async def start_command(client: Midukki_RoboT, message: message()):
                 ]    
                 pr0fess0r_99 = markup()(pr0fess0r_99)
                 await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
-                return
             except FloodWait as x:
                 await asyncio.sleep(x.value)
                 FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
@@ -85,37 +84,11 @@ async def start_command(client: Midukki_RoboT, message: message()):
                     ]
                 ]    
                 pr0fess0r_99 = markup()(pr0fess0r_99)
-                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
-                return    
+                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                    
             except UserIsBlocked:
-                await message.reply(f"{mention} : blocked the bot")
-                FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                pr0fess0r_99 = [
-                    [
-                        button()
-                            (
-                                "🔰 Join My Channel 🔰",
-                                    url=invite_link.invite_link
-                            )
-                    ]
-                ]    
-                pr0fess0r_99 = markup()(pr0fess0r_99)
-                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
-                return
+                pass
             except PeerIdInvalid:
-                await message.reply(f"{mention} : user id invalid")
-                FORCES = ["https://telegra.ph/file/b2acb2586995d0e107760.jpg"]
-                pr0fess0r_99 = [
-                    [
-                        button()
-                            (
-                                "🔰 Join My Channel 🔰",
-                                    url=invite_link.invite_link
-                            )
-                    ]
-                ]    
-                pr0fess0r_99 = markup()(pr0fess0r_99)
-                await message.reply_photo(photo=choice(FORCES), caption=f"""Hello {message.from_user.mention}. \nYou Have <a href="{invite_link.invite_link}">Not Subscribed</a> 𝚃𝙾 <a href="{invite_link.invite_link}">my updates channel</a>.so you do not get the files on here""", reply_markup=pr0fess0r_99)                
+                pass                
 
 
         try:
