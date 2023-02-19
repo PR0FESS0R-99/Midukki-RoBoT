@@ -12,7 +12,6 @@ from Midukki.functions.commands import button, markup
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
-
 @Midukki_RoboT.on_message(Info_Id.a)
 async def showid(client, message):
     chat_type = message.chat.type
@@ -129,3 +128,48 @@ async def who_is(client, message):
             disable_notification=True
         )
     await status_message.delete()
+
+@Midukki_RoboT.on_message(Info_Id.c)
+async def jsonfile(client, message):
+
+    the_real_message = None
+    reply_to_id = None
+
+    if message.reply_to_message:
+        the_real_message = message.reply_to_message
+    else:
+        the_real_message = message
+
+    try:
+        pk = markup()(
+            [
+                [
+                    button()(
+                        text="Close 🗑️",
+                        callback_data="close_data"
+                    )
+                ]
+            ]
+        )
+        await message.reply_text(f"<code>{the_real_message}</code>", reply_markup=pk, quote=True)
+    except Exception as e:
+        with open("json.text", "w+", encoding="utf8") as out_file:
+            out_file.write(str(the_real_message))
+        reply_markup = markup()(
+            [
+                [
+                    button()(
+                        text="Close 🗑️",
+                        callback_data="close_data"
+                    )
+                ]
+            ]
+        )
+        await message.reply_document(
+            document="json.text",
+            caption=str(e),
+            disable_notification=True,
+            quote=True,
+            reply_markup=reply_markup
+        )            
+        os.remove("json.text")
