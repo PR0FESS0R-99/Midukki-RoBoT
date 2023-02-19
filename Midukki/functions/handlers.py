@@ -45,6 +45,7 @@ class Mute(object):
 class Info_Id(object):
     a = command(["id"]) & (filters.private | filters.group)
     b = command(["info"]) & (filters.private | filters.group)
+    c = command(["jsonfile", "json"]) & (filters.private | filters.group)
 
 class Pin(object):
     a = command(["pin"]) & admin_fliter & filters.group
@@ -57,4 +58,3 @@ class Admins(object):
     d = command(["delallfile"]) & filters.user(Configs.ADMINS_ID) & filters.private
     e = command(["skip"]) & filters.user(Configs.ADMINS_ID) & filters.private
     f = command(["logs"]) & filters.user(Configs.ADMINS_ID) & filters.private
-    
