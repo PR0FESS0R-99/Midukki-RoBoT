@@ -58,3 +58,6 @@ class Admins(object):
     d = command(["delallfile"]) & filters.user(Configs.ADMINS_ID) & filters.private
     e = command(["skip"]) & filters.user(Configs.ADMINS_ID) & filters.private
     f = command(["logs"]) & filters.user(Configs.ADMINS_ID) & filters.private
+
+class Purge(object):
+    a = command(["purge"]) & admin_fliter & filters.group
