@@ -80,6 +80,7 @@ class Configs(object):
     STOP_BOT = bool(environ.get("DEFAULT", False))
     PORT_CODE = environ.get("PORT", "8080")
     broadcast_ids = {} # don't change this..!!  
+    TG_MAX_SELECT_LEN = 100
 
 class Index(object):
     CURRENT = int(environ.get("SKIP", 2))
