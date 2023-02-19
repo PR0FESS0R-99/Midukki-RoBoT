@@ -61,3 +61,11 @@ class Admins(object):
 
 class Purge(object):
     a = command(["purge"]) & admin_fliter & filters.group
+
+class all1(object):
+    a = command(["share"]) & (filters.private | filters.group)
+    b = command(["telegraph"]) & (filters.private | filters.group)
+    c = command(["tts"]) & (filters.private | filters.group)
+    d = command(["alive"]) & (filters.private | filters.group)
+    e = command(["ping"]) & (filters.private | filters.group)
+    f = command(["font"]) & (filters.private | filters.group)
