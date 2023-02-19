@@ -62,7 +62,7 @@ class Admins(object):
 class Purge(object):
     a = command(["purge"]) & admin_fliter & filters.group
 
-class all1(object):
+class all(object):
     a = command(["share"]) & (filters.private | filters.group)
     b = command(["telegraph"]) & (filters.private | filters.group)
     c = command(["tts"]) & (filters.private | filters.group)
