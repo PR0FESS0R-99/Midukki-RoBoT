@@ -126,6 +126,7 @@ INFO_TXT = """
 
 ◉ /id : get id of a specifed user.
 ◉ /info : get information about a user.
+◉ /json : get json file a user
 """
 
 SPELL_TXT = """
@@ -231,6 +232,40 @@ Welcome To {chat} ❣️
 SEND_LOGS_A = """
 #BOT_STARTED"""
 
+PURGE_TXT = """
+**--MODULE OF PURGE--** 🗑️
+
+Delete A Lot Of Messages From Groups!
+
+🔋 **--Commands and Usage**-- :
+
+● /purge : Delete All Messages From The Replied To Message, To The Current Message
+"""
+
+TELEGRAPH_TXT = """
+**--MODULE OF TE.LEGRA.PH--** 🗑️
+
+• Do as you wish with telegra.ph module!
+• This Command Is Available in goups and pms
+• This Command Can be used by everyone
+
+🔋 **--Commands and Usage**-- :
+
+● /telegraph - Send me this command reply with picture or video file Under (5MB) 
+"""
+
+TTS_TXT = """
+**--MODULE OF TTS--** 🗑️
+
+Translate text to speech
+
+🔋 **--Commands and Usage**-- :
+
+● /tts  : convert text to speech
+"""
+
+
+
 class Txt(object):
     START_TXT = START_TXT
     HELP_TXT = HELP_TXT
@@ -246,3 +281,6 @@ class Txt(object):
     BAN_TXT = BAN_TXT
     PIN_TXT = PIN_TXT
     ADMIN_PANEL = ADMIN_PANEL
+    PURGE_TXT = PURGE_TXT
+    TELEGRAPH_TXT = TELEGRAPH_TXT
+    TTS_TXT = TTS_TXT
