@@ -52,6 +52,7 @@ async def send_for_index(client, message):
         chat_id = message.forward_from_chat.username or message.forward_from_chat.id
     else:
         return
+
     try:
         try: await client.get_chat(chat_id)
         except Exception as e:
@@ -63,6 +64,7 @@ async def send_for_index(client, message):
     except Exception as e:
         logger.exception(e)
         return await message.reply(f'Errors - {e}')
+
     try:
         k = await client.get_messages(chat_id, last_msg_id)
     except:
@@ -70,29 +72,19 @@ async def send_for_index(client, message):
     if k.empty:
         return await message.reply('This may be group and iam not a admin of the group.')
 
-    if message.from_user.id in Configs.ADMINS_ID:
-        buttons = [
-            [
-                button()
-                    (
-                        'Yes',
-                            callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}')
-            ],
-            [
-                button()
-                    (
-                        'close',
-                            callback_data='close_data'
-                    )
-            ]
-        ]
+    user_id = message.from_user.id if message.from_user else None
+    if not user_id:
+        return await message.reply('your anonymous user')
 
+    if user_id in Configs.ADMINS_ID:
+        buttons = [[
+         button()('Yes', callback_data=f'index#accept#{chat_id}#{last_msg_id}#{user_id}')
+         ],[
+         button()('Close', callback_data='close_data')
+         ]]
         reply_markup = markup()(buttons)
-        return await message.reply(
-            f'Do you Want To Index This Channel/ Group ?\n\nChat ID/ Username: <code>{chat_id}</code>\nLast Message ID: <code>{last_msg_id}</code>',
-            reply_markup=reply_markup
-        )
-
+        return await message.reply(f'Do you Want To Index This Channel / Group?\n\nChat ID  Username: <code>{chat_id}</code>\nLast Message ID: <code>{last_msg_id}</code>', reply_markup=reply_markup)
+        
     if type(chat_id) is int:
         try:
             link = (await client.create_chat_invite_link(chat_id)).invite_link
@@ -100,26 +92,18 @@ async def send_for_index(client, message):
             return await message.reply('Make sure iam an admin in the chat and have permission to invite users.')
     else:
         link = "@" + message.forward_from_chat.username if message.forward_from_chat else None
-    buttons = [
-        [
-            button()
-                (
-                    'Accept Index',
-                        callback_data=f'index#accept#{chat_id}#{last_msg_id}#{message.from_user.id}'
-                )
-        ],
-        [
-            button()
-                (
-                    'Reject Index',
-                        callback_data=f'index#reject#{chat_id}#{message.id}#{message.from_user.id}'
-                )
-        ]
-    ]
+
+    buttons = [[
+        button()('Accept Index', callback_data=f'index#accept#{chat_id}#{last_msg_id}#{user_id}')
+        ],[
+        button()('Reject Index', callback_data=f'index#reject#{chat_id}#{message.id}#{user_id}')
+        ]]
     reply_markup = markup()(buttons)
+
     if Configs.LOG_CHANNEL:
-        await client.send_message(Configs.LOG_CHANNEL,
-            f'#IndexRequest\n\nBy : {message.from_user.mention} (<code>{message.from_user.id}</code>)\nChat ID/ Username - <code> {chat_id}</code> Message ID - <code>{last_msg_id}</code>\nInviteLink - {link}',
+        await client.send_message(
+            chat_id=Configs.LOG_CHANNEL,
+            text=f'#IndexRequest\n\nBy : {message.from_user.mention} (<code>{user_id}</code>)\nChat ID / Username - <code> {chat_id}</code> Message ID - <code>{last_msg_id}</code>\nInviteLink - {link}',
             reply_markup=reply_markup
         )
         await message.reply('ThankYou For the Contribution, Wait For My Moderators to verify the files.')
@@ -131,9 +115,10 @@ async def index_files(client, query):
     _, muhammed, chat, lst_msg_id, from_user = query.data.split("#")
     if muhammed == 'reject':
         await query.message.delete()
-        await client.send_message(int(from_user),
-                               f'Your Submission for indexing {chat} has been decliened by our moderators.',
-                               reply_to_message_id=int(lst_msg_id)
+        await client.send_message(
+            int(from_user),
+            f'Your Submission for indexing {chat} has been decliened by our moderators.',
+            reply_to_message_id=int(lst_msg_id)
         )
         return
 
@@ -369,7 +354,6 @@ async def set_spellmode(client: Midukki_RoboT, message: message()):
     pr0fess0r_99 = message.text.split(" ", 1)[1]
     await save_group_settings(grp_id, 'spell_caption', pr0fess0r_99)
     await sts.edit(f"""Successfully Changed SpellCheck Message (Autofilter) for {title} to \n\n{pr0fess0r_99}""")
-
 
 @Midukki_RoboT.on_message(AutoFilter.g)
 async def reset_spellmode(client: Midukki_RoboT, message: message()):
