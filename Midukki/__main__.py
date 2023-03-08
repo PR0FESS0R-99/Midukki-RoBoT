@@ -29,9 +29,9 @@ async def start_command(client: Midukki_RoboT, message: message()):
     if len(message.command) != 2:
         if environ.get("BOT_PICS"):
             try:
-                await message.reply_photo(photo=choice(Configs.START_PICS), caption=Configs.START_MESSAGE.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=vars.start_buttons(bot_username), disable_web_page_preview=False)   
+                await message.reply_photo(photo=choice(Configs.START_PICS), caption=Configs.START_MESSAGE.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=vars.start_buttons(bot_username))   
             except Exception as e:
-                await message.reply_photo(photo=choice(Configs.START_PICS), caption=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=vars.start_buttons(bot_username), disable_web_page_preview=False)     
+                await message.reply_photo(photo=choice(Configs.START_PICS), caption=START_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=vars.start_buttons(bot_username))     
                 await message.reply(e)
         else:
             try:
@@ -114,7 +114,7 @@ async def help_command(client: Midukki_RoboT, message: message()):
     bot_mention = Bots.BOT_MENTION
     bot_username = Bots.BOT_USERNAME    
     if environ.get("BOT_PICS"):
-        await message.reply_photo(photo=choice(Configs.START_PICS), caption=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons), disable_web_page_preview=False)    
+        await message.reply_photo(photo=choice(Configs.START_PICS), caption=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))    
     else:
         await message.reply_text(text=HELP_TXT.format(bot=bot_mention, mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons), disable_web_page_preview=True)
 
@@ -129,7 +129,7 @@ async def about_command(client: Midukki_RoboT, message: message()):
     bot_name = Bots.BOT_NAME
     bot_username = Bots.BOT_USERNAME    
     if environ.get("BOT_PICS"):
-        await message.reply_photo(photo=choice(Configs.START_PICS), caption=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons), disable_web_page_preview=False)   
+        await message.reply_photo(photo=choice(Configs.START_PICS), caption=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.help_buttons))   
     else:
         await message.reply_text(text=ABOUT_TXT.format(mention=mention, name=bot_name, username=bot_username), reply_markup=markup()(vars.about_buttons), disable_web_page_preview=True)
 
@@ -144,7 +144,7 @@ async def donate_command(client: Midukki_RoboT, message: message()):
     bot_name = Bots.BOT_NAME
     bot_username = Bots.BOT_USERNAME    
     if environ.get("BOT_PICS"):
-        await message.reply_photo(photo=choice(Configs.START_PICS), caption=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username), disable_web_page_preview=False)      
+        await message.reply_photo(photo=choice(Configs.START_PICS), caption=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username))      
     else:
         await message.reply_text(text=DONATE_TXT.format(mention=mention, name=bot_name, username=bot_username), disable_web_page_preview=True)
     await message.reply(f"You can also donate to the person currently running me [Here]({Configs.DONATE_LINKS})")  
