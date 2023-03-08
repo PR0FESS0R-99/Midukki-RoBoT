@@ -62,6 +62,9 @@ class Admins(object):
 class Purge(object):
     a = command(["purge"]) & admin_fliter & filters.group
 
+class Reports(object):
+    a = (command(["report"]) | filters.regex("@admins") | filters.regex("@admin")) & filters.group
+    
 class All(object):
     a = command(["share"]) & (filters.private | filters.group)
     b = command(["telegraph"]) & (filters.private | filters.group)
