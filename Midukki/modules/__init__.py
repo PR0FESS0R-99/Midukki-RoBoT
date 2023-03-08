@@ -195,6 +195,33 @@ async def callback_ui(client, query):
         except MessageNotModified:
             pass
 
+    elif cb == "telegraph_cb":
+        btn, txt = CB.telegraph_help(client, query)
+        if Configs.LOADING_SYMBOL == True:
+            await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
+        try:
+            await query.message.edit(text=txt, reply_markup=btn)
+        except MessageNotModified:
+            pass
+        
+    elif cb == "purge_cb":
+        btn, txt = CB.purge_help(client, query)
+        if Configs.LOADING_SYMBOL == True:
+            await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
+        try:
+            await query.message.edit(text=txt, reply_markup=btn)
+        except MessageNotModified:
+            pass
+        
+    elif cb == "tts_cb":
+        btn, txt = CB.tts_help(client, query)
+        if Configs.LOADING_SYMBOL == True:
+            await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
+        try:
+            await query.message.edit(text=txt, reply_markup=btn)
+        except MessageNotModified:
+            pass
+        
     elif cb == "source_cb":
         btn, txt = CB.source_code(client, query)
         if Configs.LOADING_SYMBOL == True:
@@ -227,23 +254,27 @@ class vars(object):
         return markup()(keyword)
 
     help_buttons = [[
-        button()("📤AutoFilter", callback_data="maincb+auto_cb"),
-        button()("🎛️ManualFilter", callback_data="maincb+manual_cb")
+        button()("Auto", callback_data="maincb+auto_cb"),
+        button()("Ban", callback_data="maincb+ban_cb"),
+        button()("Caption", callback_data="maincb+caption_cb")
         ],[
-        button()("🤬Ban", callback_data="maincb+ban_cb"),
-        button()("🤐Mute", callback_data="maincb+mute_cb"),
-        button()("ℹ️IDs", callback_data="maincb+info_cb")
-        ],[ 
-        button()("📌Pin", callback_data="maincb+pin_cb"),
-        button()("🗣️Spell", callback_data="maincb+spell_cb"),
-        button()("📝Caption", callback_data="maincb+caption_cb")
+        button()("Connection", callback_data="maincb+connection_cb"),
+        button()("Misc", callback_data="maincb+info_cb"),
+        button()("Manual", callback_data="maincb+manual_cb")
         ],[
-        button()("🔗Connection", callback_data="maincb+connection_cb"),
-        button()("📡Status", callback_data="maincb+stats_cb")
+        button()("Mute", callback_data="maincb+mute_cb"),
+        button()("Pin", callback_data="maincb+pin_cb"),
+        button()("Purge", callback_data="maincb+purge_cb")
         ],[
-        button()("🔐Admin Panel🔐", callback_data="maincb+admin_panel_cb")
+        button()("TTS", callback_data="maincb+tts_cb"),
+        button()("TTS", callback_data="maincb+tts_cb"),
+        button()("Telegraph", callback_data="maincb+telegraph_cb")
         ],[
-        button()("🚫 Close", callback_data="close_data"),
+        button()("Spell", callback_data="maincb+spell_cb"),
+        button()("Status", callback_data="maincb+stats_cb"),
+        button()("Admins", callback_data="maincb+admin_panel_cb")
+        ],[
+        button()("Close", callback_data="close_data"),
         button()("<= Back", callback_data="maincb+start_cb")     
         ]]
 
@@ -333,6 +364,21 @@ class CB:
         btn = markup()(vars.help_emitter_btn)
         return btn, txt
    
+    def telegraph_help(client, query):
+        txt = Txt.MUTE_TXT
+        btn = markup()(vars.help_emitter_btn)
+        return btn, txt
+
+    def purge_help(client, query):
+        txt = Txt.BAN_TXT
+        btn = markup()(vars.help_emitter_btn)
+        return btn, txt
+
+    def tts_help(client, query):
+        txt = Txt.PIN_TXT
+        btn = markup()(vars.help_emitter_btn)
+        return btn, txt
+
     def admin_panel(client, query):
         txt = Txt.ADMIN_PANEL
         btn = markup()(vars.help_emitter_btn)
