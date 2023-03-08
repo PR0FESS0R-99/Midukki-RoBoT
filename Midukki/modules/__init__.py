@@ -266,7 +266,7 @@ class vars(object):
         button()("Pin", callback_data="maincb+pin_cb"),
         button()("Purge", callback_data="maincb+purge_cb")
         ],[
-        button()("TTS", callback_data="maincb+tts_cb"),
+        button()("Reports", callback_data="maincb+reports_cb"),
         button()("TTS", callback_data="maincb+tts_cb"),
         button()("Telegraph", callback_data="maincb+telegraph_cb")
         ],[
@@ -365,17 +365,17 @@ class CB:
         return btn, txt
    
     def telegraph_help(client, query):
-        txt = Txt.MUTE_TXT
+        txt = Txt.TELEGRAPH_TXT
         btn = markup()(vars.help_emitter_btn)
         return btn, txt
 
     def purge_help(client, query):
-        txt = Txt.BAN_TXT
+        txt = Txt.PURGE_TXT
         btn = markup()(vars.help_emitter_btn)
         return btn, txt
 
     def tts_help(client, query):
-        txt = Txt.PIN_TXT
+        txt = Txt.TTS_TXT
         btn = markup()(vars.help_emitter_btn)
         return btn, txt
 
