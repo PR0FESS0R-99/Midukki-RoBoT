@@ -132,25 +132,15 @@ async def index_files(client, query):
                                f'Your Submission for indexing {chat} has been accepted by our moderators and will be added soon.',
                                reply_to_message_id=int(lst_msg_id)
         )
-    await msg.edit(
-        "Starting Indexing",
-        reply_markup=markup()
-            (
-                [
-                    [
-                        button()
-                            (
-                                'Cancel',
-                                    callback_data='index_cancel'
-                            )
-                    ]
-                ]
-           )
-       )
+
+    keyword = [[ button()('Cancel',callback_data='index_cancel') ]]    
+    await msg.edit("Starting Indexing", reply_markup=markup()(keyword))
+
     try:
         chat = int(chat)
     except:
         chat = chat
+        
     await index_files_to_db(int(lst_msg_id), chat, msg, client)
 
 

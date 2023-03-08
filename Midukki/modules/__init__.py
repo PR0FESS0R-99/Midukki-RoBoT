@@ -17,8 +17,8 @@ from .settings_configs import setting_cb
 @Midukki_RoboT.on_callback_query(filters.regex("(close_data|groupcb|connectcb|disconnect|deletecb|backcb|index|get_file|nextgroup|backgroup|delallcancel|delallconfirm|alertmessage|settings)"))
 async def cb_handler(client, query):
 
-    try: user_id = query.reply_to_message.from_user.id
-    except: user_id = query.from_user.id
+    try: user_id = query.reply_to_message.from_user.id if query.reply_to_message.from_user esle None
+    except: user_id = query.from_user.id if query.from_user else None
 
     if query.data.startswith("index"):
         await index_files(client, query)
@@ -68,7 +68,12 @@ async def cb_handler(client, query):
 
 @Midukki_RoboT.on_callback_query(filters.create(lambda _, __, query: query.data.startswith("maincb")))
 async def callback_ui(client, query):
-    cb = query.data.split("+", 1)[1]
+    try:
+        cb = query.data.split("+", 1)[1]
+    except:
+        await query.message.delete()
+        await query.answer("Server Down()")
+        return
 
     #====(start)===#
     if cb == "start_cb":
@@ -76,11 +81,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn,
-                parse_mode=enums.ParseMode.DEFAULT
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -89,11 +90,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn,
-                parse_mode=enums.ParseMode.DEFAULT
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -102,10 +99,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
     
@@ -116,10 +110,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -128,10 +119,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -140,10 +128,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -152,10 +137,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -164,10 +146,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -176,10 +155,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -188,10 +164,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -200,10 +173,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -212,10 +182,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -224,10 +191,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn 
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -236,10 +200,7 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         try:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         except MessageNotModified:
             pass
 
@@ -248,184 +209,73 @@ async def callback_ui(client, query):
         if Configs.LOADING_SYMBOL == True:
             await loading(query, Configs.LOADING_A, Configs.LOADING_B, asyncio.sleep)
         if query.from_user.id in Configs.ADMINS_ID:
-            await query.message.edit(
-                text=txt,
-                reply_markup=btn
-            )
+            await query.message.edit(text=txt, reply_markup=btn)
         else:
             await query.answer("Hey Bro or Sis 🙏 Your Not A Authorized User", show_alert=True)
 
 class vars(object):
-    start_buttons = [
-        [
-            button()
-                (
-                    "➕️ Add Me To Your Group ➕️",
-                        url=f"https://t.me/{Bots.BOT_USERNAME}?startgroup=new"
-                )
-        ],
-        [
-            button()
-                (
-                    "Support",
-                        url="https://t.me/+sv5flNs7yew1OTk1"
-                ),
-            button()
-                (
-                    "Updates",
-                        url="https://t.me/Mo_Tech_YT"
-                )
-        ],
-        [
-            button()
-                (
-                    "Help",
-                        callback_data="maincb+help_cb"
-                ),
-            button()
-                (
-                    "About",
-                       callback_data="maincb+about_cb"
-                )
-        ]
-    ]
-    help_buttons = [
-        [
-            button()(
-                "📤AutoFilter", callback_data="maincb+auto_cb"
-            ),
-            button()(
-                "🎛️ManualFilter", callback_data="maincb+manual_cb"
-            )
-        ],
-        [
-            button()(
-                "🤬Ban", callback_data="maincb+ban_cb"
-            ),
-            button()(
-                "🤐Mute", callback_data="maincb+mute_cb"
-            ),
-            button()(
-                "ℹ️IDs", callback_data="maincb+info_cb"
-            )
-        ],
-        [     
-            button()(
-                "📌Pin", callback_data="maincb+pin_cb"
-            ),
-            button()(
-                "🗣️Spell", callback_data="maincb+spell_cb"
-            ),
-            button()(
-                "📝Caption", callback_data="maincb+caption_cb"
-            )
-        ],
-        [
-            button()(
-                "🔗Connection", callback_data="maincb+connection_cb"
-            ),
-            button()(
-                "📡Status", callback_data="maincb+stats_cb"
-            )
-        ],
-        [
-            button()(
-               "🔐Admin Panel🔐", callback_data="maincb+admin_panel_cb"
-            )
-        ],
-        [
-            button()(
-                "🚫 Close", callback_data="close_data"
-            ),
-            button()(
-                "<= Back", callback_data="maincb+start_cb"
-            )     
-        ]
-    ]
-    about_buttons = [
-        [
-            button()
-                (
-                    "Support",
-                        url="https://t.me/Mo_Tech_YT"
-                ),
-            button()
-                (
-                    "Source",
-                        url="https://t.me/+sv5flNs7yew1OTk1"
-                )
-        ],
-        [
-            button()
-                (
-                    "Tutorial",
-                        url="https://youtu.be/63K9xkKMBoo"
-                ),
-            button()
-                (
-                    "Insta",
-                        url="https://www.instagram.com/mrk_yt_"
-                )
-        ],
-        [
-            button()
-                (
-                    "⬅️ Back To Home ➡️",
-                        callback_data="maincb+start_cb"
-                )
-        ]
-    ]
+    def start_buttons(Bot_Username):
+        keyword = [[
+            button()("➕️ Add Me To Your Group ➕️", url=f"https://t.me/{Bot_Username}?startgroup=new")
+            ],[
+            button()("Support", url="https://t.me/+sv5flNs7yew1OTk1"),
+            button()("Updates",url="https://t.me/Mo_Tech_YT")
+            ],[
+            button()("Help", callback_data="maincb+help_cb"),
+            button()("About", callback_data="maincb+about_cb")
+            ]]
+        return markup(keyword)
 
-    help_emitter_btn = [
-        [
-            button()
-                (
-                    "close 🗑️",
-                        callback_data="close_data"
-                ),
-            button()
-                (
-                    "back <=",
-                        callback_data="maincb+help_cb"
-                )
-        ]
-    ]
+    help_buttons = [[
+        button()("📤AutoFilter", callback_data="maincb+auto_cb"),
+        button()("🎛️ManualFilter", callback_data="maincb+manual_cb")
+        ],[
+        button()("🤬Ban", callback_data="maincb+ban_cb"),
+        button()("🤐Mute", callback_data="maincb+mute_cb"),
+        button()("ℹ️IDs", callback_data="maincb+info_cb")
+        ],[ 
+        button()("📌Pin", callback_data="maincb+pin_cb"),
+        button()("🗣️Spell", callback_data="maincb+spell_cb"),
+        button()("📝Caption", callback_data="maincb+caption_cb")
+        ],[
+        button()("🔗Connection", callback_data="maincb+connection_cb"),
+        button()("📡Status", callback_data="maincb+stats_cb")
+        ],[
+        button()("🔐Admin Panel🔐", callback_data="maincb+admin_panel_cb")
+        ],[
+        button()("🚫 Close", callback_data="close_data"),
+        button()("<= Back", callback_data="maincb+start_cb")     
+        ]]
 
-    start_emitter_btn = [
-        [
-            button()
-                (
-                    "close 🗑️",
-                        callback_data="close_data"
-                ),
-            button()
-                (
-                    "back <=",
-                        callback_data="maincb+start_cb"
-                )
-        ]
-    ]
+    about_buttons = [[
+        button()("Support", url="https://t.me/Mo_Tech_YT"),
+        button()("Source", url="https://t.me/+sv5flNs7yew1OTk1")
+        ],[
+        button()("Tutorial", url="https://youtu.be/63K9xkKMBoo"),
+        button()("Insta", url="https://www.instagram.com/mrk_yt_")
+        ],[
+        button()("⬅️ Back To Home ➡️", callback_data="maincb+start_cb")
+        ]]
 
-    about_emitter_btn = [
-        [
-            button()
-                (
-                    "close 🗑️",
-                        callback_data="close_data"
-                ),
-            button()
-                (
-                    "back <=",
-                        callback_data="maincb+about_cb"
-                )
-        ]
-    ]
+    help_emitter_btn = [[
+        button()("close 🗑️",callback_data="close_data"),
+        button()("back <=", callback_data="maincb+help_cb")
+        ]]
 
+    start_emitter_btn = [[
+        button()("close 🗑️",callback_data="close_data"),
+        button()("back <=", callback_data="maincb+start_cb")
+        ]]
+       
+    about_emitter_btn =  [[
+        button()("close 🗑️",callback_data="close_data"),
+        button()("back <=", callback_data="maincb+about_cb")
+        ]]
 
 class CB:
     def start_cb(client, query):
         txt = Txt.START_TXT.format(bot=Bots.BOT_MENTION, mention=query.from_user.mention)            
-        btn = markup()(vars.start_buttons)
+        btn = vars.start_buttons(Bots.BOT_USERNAME)
         return btn, txt
         
     def help_cb(client, query):
