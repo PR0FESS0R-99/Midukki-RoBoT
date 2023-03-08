@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 # (c) @VysakhTG
 
-from pyrogram import Client, filters, enums
+from Midukki.midukki import Midukki_RoboT
+from Midukki.functions.handlers import Reports
+from pyrogram import enums
 
-@Client.on_message((filters.command(["report"]) | filters.regex("@admins") | filters.regex("@admin")) & filters.group)
+@Midukki_RoboT.on_message(Reports.a)
 async def notify_admin(bot, message):
     chat_id = message.chat.id
     user_id = message.from_user.id
