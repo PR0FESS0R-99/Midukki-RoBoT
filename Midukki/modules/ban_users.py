@@ -1,4 +1,3 @@
-from pyrogram import Client, filters
 from Midukki.midukki import Midukki_RoboT 
 from Midukki.functions.extract_user import extract_user
 from Midukki.functions.extract_time import extract_time
@@ -28,7 +27,7 @@ async def ban_user(_, message):
                 " നെ വിലക്കിയിരിക്കുന്നു."
             )
 
-@Client.on_message(Ban.b)
+@Midukki_RoboT.on_message(Ban.b)
 async def un_ban_user(_, message):
     user_id, user_first_name, _ = extract_user(message)
 
