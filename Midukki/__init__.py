@@ -1,8 +1,25 @@
+import logging
 from aiohttp import web
 from os import environ
 from re import compile
 from time import time
 from .scripts import START_TXT, FILE_CAPTION_TXT, SPELLCHECK_TXT, IMDB_TEMPLATE_TXT, WELCOME_TXT
+from logging.handlers import RotatingFileHandler
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt='%d-%b-%y %H:%M:%S',
+    handlers=[
+        RotatingFileHandler(
+            "midukki.txt",
+            maxBytes=50000000,
+            backupCount=10
+        ),
+        logging.StreamHandler()
+    ]
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 routes = web.RouteTableDef()
 find = compile(r'^.\d+$')
@@ -98,3 +115,6 @@ async def bot_run():
 #     BUTTON_SIZE = False / "off"
 #     SPELLCHECK = True / "off"
 #     FILE_MODE = False / "callback"
+
+def LOGGER(name: str) -> logging.Logger:
+    return logging.getLogger(name)

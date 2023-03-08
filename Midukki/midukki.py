@@ -4,7 +4,7 @@ from logging import getLogger, ERROR
 from pyrogram.raw.all import layer
 from pyrogram import Client, __version__, types, enums
 from pyrogram.errors import UserNotParticipant
-from Midukki import Accounts, Bots, who_is_creator, Configs, bot_run
+from Midukki import Accounts, Bots, Configs, bot_run, LOGGER
 from typing import Union, Optional, AsyncGenerator
 
 logger = getLogger(__name__)
@@ -22,20 +22,19 @@ class Midukki_RoboT(Client):
             workers=min(32, cpu_count() + 4),
             sleep_threshold=5,
         )
+        self.LOGGER = LOGGER
 
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
-      #  id1 = await self.get_users(Configs.ADMINS_ID[0])
-      #  id2 = await self.get_users(int(5601313788))
-
         Bots.BOT_ID = usr_bot_me.id
         Bots.BOT_NAME = usr_bot_me.first_name
         Bots.BOT_MENTION = usr_bot_me.mention
         Bots.BOT_USERNAME = usr_bot_me.username
-        logging.info(f"@{usr_bot_me.username} based on Pyrogram v{__version__} ")
-        logging.info(f"(Layer {layer}) started on @{usr_bot_me.username}. ")
-        logging.info("This BoT Created By @Mo_Tech_YT")        
+
+        self.LOGGER(__name__).info(f"@{usr_bot_me.username} based on Pyrogram v{__version__} ")
+        self.LOGGER(__name__).info(f"(Layer {layer}) started on @{usr_bot_me.username}. ")
+        self.LOGGER(__name__).info("This BoT Created By @Mo_Tech_YT")        
         if Configs.LOG_CHANNEL:
             await self.send_logs(int(Configs.LOG_CHANNEL))
 
