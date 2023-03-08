@@ -33,11 +33,9 @@ class Midukki_RoboT(Client):
         Bots.BOT_NAME = usr_bot_me.first_name
         Bots.BOT_MENTION = usr_bot_me.mention
         Bots.BOT_USERNAME = usr_bot_me.username
-        print(
-         f"@Midukki_RoboT based on Pyrogram v{__version__} "
-         f"(Layer {layer}) started on @{usr_bot_me.username}. "
-        )
-        print("This BoT Created By @Mo_Tech_YT")        
+        logging.info(f"@{usr_bot_me.username} based on Pyrogram v{__version__} ")
+        logging.info(f"(Layer {layer}) started on @{usr_bot_me.username}. ")
+        logging.info("This BoT Created By @Mo_Tech_YT")        
         if Configs.LOG_CHANNEL:
             await self.send_logs(int(Configs.LOG_CHANNEL))
 
