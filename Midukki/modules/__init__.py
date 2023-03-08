@@ -224,7 +224,7 @@ class vars(object):
             button()("Help", callback_data="maincb+help_cb"),
             button()("About", callback_data="maincb+about_cb")
             ]]
-        return markup(keyword)
+        return markup()(keyword)
 
     help_buttons = [[
         button()("📤AutoFilter", callback_data="maincb+auto_cb"),
