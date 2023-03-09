@@ -24,6 +24,10 @@ async def notify_admin(bot, message):
     for admin in administrators:
         try:
             if admin.user.id != message.from_user.id:
-                await bot.send_message(chat_id=admin.user.id, text=f"**⚠️ ATTENTION!**\n{full_name} [{user_id}] has required an admin action in the group: **{message.chat.title}**\n\n[👉🏻 Go to message]({message.link})")
+                await bot.send_message(
+                    chat_id=admin.user.id, 
+                    text=f"**⚠️ ATTENTION!**\n{full_name} [{user_id}] has required an admin action in the group: **{message.chat.title}**\n\n[👉🏻 Go to message]({message.link})",
+                    disable_web_page_preview=True
+                )
         except:
             pass
