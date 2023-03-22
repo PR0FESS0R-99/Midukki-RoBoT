@@ -1,11 +1,9 @@
 START_TXT = """
-Hello 👋 {mention} 
+Hello 👋 {mention} 💖
 
-I'm <b>{bot}</b> ✨ an advanced telegram Group management
+ഞാൻ ഒരു 𝐆𝐑𝐎𝐔𝐏 𝐌𝐀𝐍𝐀𝐆𝐈𝐍𝐆 𝐁𝐎𝐓 ആണ്, എന്നെ നിങ്ങളുടെ ഗ്രൂപ്പിൽ ആഡ് ചെയ്യാൻ നോക്കി സമയം കളയണ്ട, എന്നെ ҒILM ИФ3 ഗ്രൂപ്പിൽ മാത്രമേ ആഡ് ചെയ്യാൻ കഴിയൂ...!!!
 
-I'm here to help you manage your groups! Hit /help to find out more about how to use me to my full potential..!
-
-Join <b><a href=http://t.me/Mo_Tech_YT>my news channel</a></b> to get information on all the latest updates
+Join <b><a href=https://t.me/filmno3tg>my news channel</a></b> to get information on all the latest updates
 """
 
 HELP_TXT = """
@@ -27,7 +25,7 @@ ABOUT_TXT = """
 [{name}](t.me/{username}) Was created on September 4, 2022
 We are currently developing this bot, using only the Pyrogram library.
 
-➾ Developers : Muhammed
+➾ Developers :  Risvan
 ➾ Language : Python3
 ➾ Framework : Pyrogram
 ➾ Database : Mongo db
@@ -36,10 +34,6 @@ We are currently developing this bot, using only the Pyrogram library.
 DONATE_TXT = """
 If you like this project of mine, you can donate by clicking on the given link
 
-Dev : [Muhammed](t.me/Pr0fess0r_99)
-Paytm : [Click Here](https://p.paytm.me/xCTH/7yzmtgie)
-  or UPI `motech8129@okaxis`
-"""
 
 STATUS_TXT = """
 **--{bot}'s STATUS--**
