@@ -110,7 +110,7 @@ async def send_for_index(client, message):
 
 async def index_files(client, query):
     if query.data.startswith('index_cancel'):
-        temp.CANCEL = True
+        Index.CANCEL = True
         return await query.answer("Cancelling Indexing")
     _, muhammed, chat, lst_msg_id, from_user = query.data.split("#")
     if muhammed == 'reject':
